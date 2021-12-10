@@ -13,6 +13,20 @@ public class Employee {
     private String name;
     private int id;
     private static int count = 1;
+    private String cardNumer;
+
+    public String getCardNumer() {
+        return cardNumer;
+    }
+
+    public void setCardNumer(String cardNumer) {
+        this.cardNumer = cardNumer;
+    }
+    
+    public Employee(String Name, String cardNumber){
+        this.name = name;
+        this.cardNumer = cardNumber;
+    }
 
     public Employee() {
         id = count;

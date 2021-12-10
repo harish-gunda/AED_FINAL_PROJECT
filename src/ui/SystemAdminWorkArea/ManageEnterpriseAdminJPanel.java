@@ -253,6 +253,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         if(enterprise.getEnterpriseType()==Enterprise.EnterpriseType.SuperMarket){
             UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new SalesSupervisorRole());
         }
+        for(UserAccount acc:enterprise.getUserAccountDirectory().getUserAccountList()){
+            System.out.println(acc.getUsername());
+        }
         
         populateTable();
         
