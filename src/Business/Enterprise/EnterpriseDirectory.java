@@ -40,6 +40,10 @@ public class EnterpriseDirectory {
         }else if(type==Enterprise.EnterpriseType.Distributor){
             enterprise=new DistributorEnterprise(name);
             enterpriseList.add(enterprise);
+        }else if(type==Enterprise.EnterpriseType.Orphanage){
+            enterprise=new OrphanageEnterprise(name);
+            enterpriseList.add(enterprise);
+            
         }
         return enterprise;
     }

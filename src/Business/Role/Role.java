@@ -24,7 +24,10 @@ public abstract class Role {
         SalesPerson("Sales Person"),
         SupplierManager("Supplier Manager"),
         TruckDeliverer("Truck Deliverer"),
-        CarDeliverer("Car Deliverer");
+        CarDeliverer("Car Deliverer"),
+        CareTaker("Care Taker"),
+        OrphanageAdmin("Orphanage Admin");
+        
         
         private String value;
         private RoleType(String value){
