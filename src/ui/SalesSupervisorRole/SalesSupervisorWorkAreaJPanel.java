@@ -45,6 +45,8 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel = new javax.swing.JLabel();
         btnManageProducts = new javax.swing.JButton();
         btnBuyProducts = new javax.swing.JButton();
+        userJButton1 = new javax.swing.JButton();
+        manageEmployeeJButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -98,6 +100,22 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnBuyProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
+
+        userJButton1.setText("Raise Delivery request");
+        userJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userJButton1ActionPerformed(evt);
+            }
+        });
+        add(userJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 170, -1));
+
+        manageEmployeeJButton1.setText("Manage Requests");
+        manageEmployeeJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageEmployeeJButton1ActionPerformed(evt);
+            }
+        });
+        add(manageEmployeeJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 150, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -143,6 +161,24 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBuyProductsActionPerformed
+
+    private void userJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButton1ActionPerformed
+        // TODO add your handling code here:
+        RaiseSupplierRequest muajp = new RaiseSupplierRequest(userProcessContainer, enterprise, userAccount,ecoSystem);
+        userProcessContainer.add("ManageUserAccountJPanel", muajp);
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_userJButton1ActionPerformed
+
+    private void manageEmployeeJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButton1ActionPerformed
+
+        ManageCustomerRequests manageEmployeeJPanel = new ManageCustomerRequests(userProcessContainer, enterprise, userAccount, ecoSystem);
+        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageEmployeeJButton1ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -151,8 +187,10 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageEmployeeJButton;
+    private javax.swing.JButton manageEmployeeJButton1;
     private javax.swing.JButton manageOrganizationJButton;
     private javax.swing.JButton userJButton;
+    private javax.swing.JButton userJButton1;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
     

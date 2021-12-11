@@ -29,7 +29,7 @@ public class SelectDistributorJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.enterprise = enterprise;
-        populateCombobox();
+        populateNetworkCombo();
     }
 
     /**
@@ -41,18 +41,43 @@ public class SelectDistributorJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cboxDistributors = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        btnSelect = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cboxNetwork = new javax.swing.JComboBox<>();
+        btnRequest1 = new javax.swing.JButton();
+        cboxDistributor = new javax.swing.JComboBox<>();
+        btnRequest = new javax.swing.JButton();
 
-        cboxDistributors.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        setPreferredSize(new java.awt.Dimension(900, 900));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Select a Distributor");
 
-        btnSelect.setText("Select");
-        btnSelect.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setText("Supplier: ");
+
+        jLabel3.setText("Network");
+
+        cboxNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectActionPerformed(evt);
+                cboxNetworkActionPerformed(evt);
+            }
+        });
+
+        btnRequest1.setText("Select Network");
+        btnRequest1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequest1ActionPerformed(evt);
+            }
+        });
+
+        cboxDistributor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnRequest.setText("Select Distributor");
+        btnRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestActionPerformed(evt);
             }
         });
 
@@ -60,63 +85,121 @@ public class SelectDistributorJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(344, 344, 344)
+                .addComponent(jLabel1)
+                .addGap(390, 390, 390))
             .addGroup(layout.createSequentialGroup()
+                .addGap(256, 256, 256)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(cboxDistributors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnSelect)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                    .addComponent(cboxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRequest, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(btnRequest1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(180, 180, 180)
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboxDistributors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSelect))
-                .addContainerGap(186, Short.MAX_VALUE))
+                    .addComponent(cboxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(btnRequest1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cboxDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRequest))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
+    private void cboxNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNetworkActionPerformed
         // TODO add your handling code here:
-        Enterprise distributor = null;
+        //        Network req=null;
+        //        System.out.println(cboxNetwork.getSelectedItem().toString());
+        //        for(Network network:ecoSystem.getNetworkList()){
+            //            if(network.getName().equals(cboxNetwork.getSelectedItem().toString())){
+                //                req = network;
+                //            }
+            //        }
+        //        for(Enterprise supplierEnterprise:req.getEnterpriseDirectory().getEnterpriseList()){
+            //            if(supplierEnterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.Supplier)){
+                //                cboxSupplier.addItem(supplierEnterprise.getName());
+                //            }
+            //        }
+
+    }//GEN-LAST:event_cboxNetworkActionPerformed
+
+    private void btnRequest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequest1ActionPerformed
+        // TODO add your handling code here:
+        
+        Network req=null;
+        System.out.println(cboxNetwork.getSelectedItem().toString());
         for(Network network:ecoSystem.getNetworkList()){
-            for(Enterprise distributorEnterprise:network.getEnterpriseDirectory().getEnterpriseList()){
-                if(distributorEnterprise.getName()==cboxDistributors.getSelectedItem().toString()){
-                    distributor = distributorEnterprise;
-                    System.out.println(distributor.getName());
-                    BuyProductsFromDistributorJPanel buyProductsFromDistributorJPanel = new BuyProductsFromDistributorJPanel(userProcessContainer,userAccount, distributor,enterprise, ecoSystem);
-                    userProcessContainer.add("buyproducts from distributor", buyProductsFromDistributorJPanel);
-                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-                    layout.next(userProcessContainer);
-                }
+            if(network.getName().equals(cboxNetwork.getSelectedItem().toString())){
+                req = network;
             }
         }
-    }//GEN-LAST:event_btnSelectActionPerformed
+        for(Enterprise supplierEnterprise:req.getEnterpriseDirectory().getEnterpriseList()){
+            System.out.println(supplierEnterprise.getEnterpriseType().getValue());
+            System.out.println(Enterprise.EnterpriseType.Distributor.getValue());
+            if(supplierEnterprise.getEnterpriseType().getValue().equals(Enterprise.EnterpriseType.Distributor.getValue())){
+                System.out.println("inside if condition");
+                cboxDistributor.addItem(supplierEnterprise.getName());
+            }
+        }
+    }//GEN-LAST:event_btnRequest1ActionPerformed
+
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
+        // TODO add your handling code here:
+        
+        Network req=null;
+        System.out.println(cboxNetwork.getSelectedItem().toString());
+        for(Network network:ecoSystem.getNetworkList()){
+            if(network.getName().equals(cboxNetwork.getSelectedItem().toString())){
+                req = network;
+            }
+        }
+
+        for(Enterprise supplierEnterprise:req.getEnterpriseDirectory().getEnterpriseList()){
+            System.out.println(supplierEnterprise.getName());
+            System.out.println(cboxDistributor.getSelectedItem());
+            if(supplierEnterprise.getName().equals(cboxDistributor.getSelectedItem().toString())){
+                BuyProductsFromDistributorJPanel buyProductsFromDistributorJPanel = new BuyProductsFromDistributorJPanel(userProcessContainer, userAccount, supplierEnterprise, enterprise,ecoSystem);
+                userProcessContainer.add("manageEmployeeJPanel", buyProductsFromDistributorJPanel);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            }
+        }
+
+    }//GEN-LAST:event_btnRequestActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSelect;
-    private javax.swing.JComboBox<String> cboxDistributors;
+    private javax.swing.JButton btnRequest;
+    private javax.swing.JButton btnRequest1;
+    private javax.swing.JComboBox<String> cboxDistributor;
+    private javax.swing.JComboBox<String> cboxNetwork;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-    private void populateCombobox() {
-        cboxDistributors.removeAllItems();
+    private void populateNetworkCombo(){
+        cboxDistributor.removeAllItems();
+        cboxNetwork.removeAllItems();
         for(Network network:ecoSystem.getNetworkList()){
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
-                if(enterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.Distributor)){
-                    cboxDistributors.addItem(enterprise.getName());
-                }
-            }
+            cboxNetwork.addItem(network.getName());
         }
     }
 }

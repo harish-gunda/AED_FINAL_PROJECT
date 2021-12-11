@@ -125,6 +125,7 @@ public class CustomerDetails extends javax.swing.JPanel {
         }
         Employee customer = new Employee(txtName.getText(), txtCard.getText());
         enterprise.getWorkQueue().getWorkRequestList().add(order);
+        JOptionPane.showMessageDialog(this, "Transaction complete");
     }//GEN-LAST:event_btnCompletePaymentActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
