@@ -35,6 +35,7 @@ public class ManageRequests extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.ecoSystem = ecoSystem;
         populateRequests();
+        populateDriverTypes();
     }
 
     /**
@@ -197,7 +198,7 @@ public class ManageRequests extends javax.swing.JPanel {
         }
 
         Order order = (Order)tblRequest.getValueAt(selectedRow, 0);
-        order.setReceiver(userAccount);
+        order.setSupplierAdmin(userAccount);
         if(!order.getStatus().contains("Rejected")){
             order.setStatus("Accepted by Supplier");
             JOptionPane.showMessageDialog(this, "This order has been accepted");
@@ -270,7 +271,8 @@ public class ManageRequests extends javax.swing.JPanel {
                 for(UserAccount account: organization.getUserAccountDirectory().getUserAccountList()){
                     if(account.getEmployee().getName().equals(cboxDriver.getSelectedItem().toString())){
                         for(WorkRequest request:ecoSystem.getWorkQueue().getWorkRequestList()){
-                            if(request.getDelivery().equals(account) && request.getStatus().contains("Assigned to delivery")){
+                            System.out.println(request.getDelivery());
+                            if(request.getDelivery()!=null && request.getDelivery().equals(account) && request.getStatus().contains("Assigned to delivery")){
                                 JOptionPane.showMessageDialog(this, "Driver is busy");
                                 return;
                             }
@@ -278,6 +280,8 @@ public class ManageRequests extends javax.swing.JPanel {
                         Order order = (Order)tblRequest.getValueAt(selectedRow, 0);
                         order.setDelivery(account);
                         order.setStatus("Assigned to delivery");
+                        JOptionPane.showMessageDialog(this, "Assigned to delivery");
+                        break;
                     }
                 }
             }
@@ -305,7 +309,7 @@ public class ManageRequests extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
         for(WorkRequest workRequest:ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(workRequest.getSupplierEnterprise().getName().equals(enterprise.getName())){
+            if(workRequest.getSupplierEnterprise()!=null && workRequest.getSupplierEnterprise().getName().equals(enterprise.getName())){
                 Object[] row = new Object[5];
                 row[0] = workRequest;
                 row[1] = workRequest.getReceiver();
@@ -320,8 +324,9 @@ public class ManageRequests extends javax.swing.JPanel {
     private void populateDriverTypes(){
         cboxDriverType.removeAllItems();
         for(Organization organization: enterprise.getOrganizationDirectory().getOrganizationList()){
-            if(organization.getSupportedRole().contains(Role.RoleType.HeavyDriver ) || organization.getSupportedRole().contains(Role.RoleType.LightDriver ))
+            if(organization.getName().equals("Heavy Driver") || organization.getName().equals("Light Driver")){
                 cboxDriverType.addItem(organization.getName());
+            }
         }
     }
     

@@ -36,7 +36,7 @@ public class ManageSupplierOrganizationJPanel extends javax.swing.JPanel {
     private void populateCombo(){
         organizationJComboBox.removeAllItems();
         for (Type type : Organization.Type.values()){
-            if (!type.getValue().equals(Type.Admin.getValue()))
+            if (type.getValue().equals(Type.HeavyDriver.getValue()) || type.getValue().equals(Type.LightDriver.getValue()))
                 organizationJComboBox.addItem(type);
         }
     }
@@ -162,6 +162,7 @@ public class ManageSupplierOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         directory.createOrganization(type);
+        System.out.println(directory.getOrganizationList());
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 

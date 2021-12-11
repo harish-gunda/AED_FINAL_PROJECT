@@ -26,6 +26,17 @@ public abstract class WorkRequest {
     private Date resolveDate;
     private Employee customer;
     private UserAccount delivery;
+    private UserAccount supplierAdmin;
+
+    public UserAccount getSupplierAdmin() {
+        return supplierAdmin;
+    }
+
+    public void setSupplierAdmin(UserAccount supplierAdmin) {
+        this.supplierAdmin = supplierAdmin;
+    }
+    
+    
 
     public UserAccount getDelivery() {
         return delivery;

@@ -4,10 +4,24 @@
  */
 package Business.Organization;
 
+import Business.Role.LightDriverRole;
+import Business.Role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author harish
  */
-public class LightDriverOrganization {
+public class LightDriverOrganization extends Organization{
     
+    public LightDriverOrganization() {
+        super(Organization.Type.LightDriver.getValue());
+    }
+
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new LightDriverRole());
+        return roles;
+    }
 }

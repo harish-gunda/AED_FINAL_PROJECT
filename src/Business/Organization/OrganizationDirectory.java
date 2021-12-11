@@ -35,6 +35,12 @@ public class OrganizationDirectory {
         }else if (type.getValue().equals(Type.SalesPerson.getValue())){
             organization = new SalesPersonOrganisation();
             organizationList.add(organization);
+        }else if (type.getValue().equals(Type.HeavyDriver.getValue())){
+            organization = new HeavyDriverOrganization();
+            organizationList.add(organization);
+        }else if (type.getValue().equals(Type.LightDriver.getValue())){
+            organization = new LightDriverOrganization();
+            organizationList.add(organization);
         }
         return organization;
     }

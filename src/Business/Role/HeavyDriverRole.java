@@ -9,7 +9,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.SalesSupervisorRole.SalesSupervisorWorkAreaJPanel;
+import ui.HeavyDriverRole.ManageHeavyRequests;
 
 /**
  *
@@ -18,6 +18,6 @@ import ui.SalesSupervisorRole.SalesSupervisorWorkAreaJPanel;
 public class HeavyDriverRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new SalesSupervisorWorkAreaJPanel(userProcessContainer, enterprise, business, account);
+        return new ManageHeavyRequests(userProcessContainer, enterprise, account,business);
     }
 }
