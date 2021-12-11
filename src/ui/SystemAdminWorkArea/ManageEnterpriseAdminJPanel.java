@@ -9,7 +9,9 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Role.AdminRole;
+import Business.Role.DistributorAdminRole;
 import Business.Role.SalesSupervisorRole;
+import Business.Role.SupplierAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -252,9 +254,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         if(enterprise.getEnterpriseType()==Enterprise.EnterpriseType.SuperMarket){
             UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new SalesSupervisorRole());
-        }
-        for(UserAccount acc:enterprise.getUserAccountDirectory().getUserAccountList()){
-            System.out.println(acc.getUsername());
+        }else if(enterprise.getEnterpriseType()==Enterprise.EnterpriseType.Distributor){
+            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DistributorAdminRole());
+        }else if(enterprise.getEnterpriseType()==Enterprise.EnterpriseType.Supplier){
+            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new SupplierAdminRole());
         }
         
         populateTable();
@@ -263,7 +266,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         userProcessContainer.remove(this);
-         Component[] componentArray = userProcessContainer.getComponents();
+        Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
         sysAdminwjp.populateTree();

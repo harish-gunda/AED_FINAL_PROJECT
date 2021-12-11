@@ -16,10 +16,18 @@ public class Order extends WorkRequest{
         productList = new ArrayList<Product>();
     }
     
-    public int total(){
+    public int totalDistributor(){
         int sum = 0;
         for(Product product: productList){
-            sum += product.getPrice()*product.getQuantity();
+            sum += product.getDistributorPrice()*product.getQuantity();
+        }
+        return sum;
+    }
+    
+    public int totalSuperMarket(){
+        int sum = 0;
+        for(Product product: productList){
+            sum += product.getSuperMarketPrice()*product.getQuantity();
         }
         return sum;
     }

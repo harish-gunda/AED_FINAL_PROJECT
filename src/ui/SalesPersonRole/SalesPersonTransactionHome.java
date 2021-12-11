@@ -12,6 +12,7 @@ import Business.WorkQueue.Product;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,6 +37,7 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         order = new Order();
+        order.setSender(account);
         populateProductList();
     }
 
@@ -198,9 +200,13 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblProductList.getSelectedRow();
         if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select an item");
             return;
         }
         boolean check = true;
+        if(((Product)tblProductList.getValueAt(selectedRow, 0)).getQuantity()==0){
+            JOptionPane.showMessageDialog(this, "Item not available");
+        }
         for(Product product:order.getProductList()){
             if(product.getName()== ((Product)tblProductList.getValueAt(selectedRow, 0)).getName()){
                 product.addQuantity();
@@ -279,7 +285,7 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
             row[0] = product;
             row[1] = product.getName();
             row[2] = product.getDescription();
-            row[3] = product.getPrice();
+            row[3] = product.getSuperMarketPrice();
             row[4] = product.getQuantity();
             model.addRow(row);
         }
@@ -294,7 +300,7 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
                 row[0] = product;
                 row[1] = product.getName();
                 row[2] = product.getDescription();
-                row[3] = product.getPrice();
+                row[3] = product.getSuperMarketPrice();
                 row[4] = product.getQuantity();
                 model.addRow(row);
             }
@@ -310,7 +316,7 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
             row[0] = product;
             row[1] = product.getName();
             row[2] = product.getDescription();
-            row[3] = product.getPrice();
+            row[3] = product.getSuperMarketPrice();
             row[4] = product.getQuantity();
             model.addRow(row);
         }

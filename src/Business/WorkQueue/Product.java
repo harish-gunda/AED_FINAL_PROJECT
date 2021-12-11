@@ -10,7 +10,8 @@ package Business.WorkQueue;
  */
 public class Product {
     private String name;
-    private int price;
+    private int distributorPrice;
+    private int superMarketPrice;
     private int quantity;
     private static int idCount = 1;
     private int id;
@@ -41,13 +42,31 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public int getPrice() {
-        return price;
+    public int getDistributorPrice() {
+        return distributorPrice;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setDistributorPrice(int distributorPrice) {
+        this.distributorPrice = distributorPrice;
     }
+
+    public int getSuperMarketPrice() {
+        return superMarketPrice;
+    }
+
+    public void setSuperMarketPrice(int superMarketPrice) {
+        this.superMarketPrice = superMarketPrice;
+    }
+
+    public static int getIdCount() {
+        return idCount;
+    }
+
+    public static void setIdCount(int idCount) {
+        Product.idCount = idCount;
+    }
+
+    
     
     public void addQuantity(){
         quantity = quantity+1;
@@ -73,7 +92,10 @@ public class Product {
         this.description = description;
     }
     
-    
+    @Override
+    public String toString(){
+        return name;
+    }
     
     
     

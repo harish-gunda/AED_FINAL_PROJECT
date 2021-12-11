@@ -2,8 +2,10 @@
 
 package ui.SalesSupervisorRole;
 
+import Business.EcoSystem;
 import ui.AdministrativeRole.*;
 import Business.Enterprise.Enterprise;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -15,11 +17,15 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     Enterprise enterprise;
+    EcoSystem ecoSystem;
+    UserAccount userAccount;
     /** Creates new form AdminWorkAreaJPanel */
-    public SalesSupervisorWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public SalesSupervisorWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, EcoSystem ecoSystem, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.ecoSystem = ecoSystem;
+        this.userAccount = userAccount;
         valueLabel.setText(enterprise.getName());
     }
     
@@ -37,6 +43,8 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        btnManageProducts = new javax.swing.JButton();
+        btnBuyProducts = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -66,7 +74,7 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
-        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 180, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
@@ -74,6 +82,22 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
 
         valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+
+        btnManageProducts.setText("Manage product prices");
+        btnManageProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageProductsActionPerformed(evt);
+            }
+        });
+        add(btnManageProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, -1));
+
+        btnBuyProducts.setText("Buy Products from Distributor");
+        btnBuyProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuyProductsActionPerformed(evt);
+            }
+        });
+        add(btnBuyProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -102,9 +126,28 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
+
+    private void btnManageProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageProductsActionPerformed
+        // TODO add your handling code here:
+        ManageProductsJPanel buyProductsFromDistributorJPanel = new ManageProductsJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("manageEmployeeJPanel", buyProductsFromDistributorJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_btnManageProductsActionPerformed
+
+    private void btnBuyProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyProductsActionPerformed
+        // TODO add your handling code here:
+        SelectDistributorJPanel buyProductsFromDistributorJPanel = new SelectDistributorJPanel(userProcessContainer,ecoSystem, userAccount, enterprise);
+        userProcessContainer.add("manageEmployeeJPanel", buyProductsFromDistributorJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnBuyProductsActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuyProducts;
+    private javax.swing.JButton btnManageProducts;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageEmployeeJButton;

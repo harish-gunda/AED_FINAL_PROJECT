@@ -18,6 +18,6 @@ import ui.SalesSupervisorRole.SalesSupervisorWorkAreaJPanel;
 public class SalesSupervisorRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new SalesSupervisorWorkAreaJPanel(userProcessContainer, enterprise);
+        return new SalesSupervisorWorkAreaJPanel(userProcessContainer, enterprise, business, account);
     }
 }
