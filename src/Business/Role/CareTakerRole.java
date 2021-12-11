@@ -11,7 +11,7 @@ import Business.Organization.CareTakerOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.CareTakerRole.CareTakerWorkAreaJPanel;
+import ui.CareTakerRole.CTWorkAreaJPanel;
 
 /**
  *
@@ -20,7 +20,7 @@ import ui.CareTakerRole.CareTakerWorkAreaJPanel;
 public class CareTakerRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CareTakerWorkAreaJPanel(userProcessContainer, account, (CareTakerOrganization)organization, enterprise);
+        return new CTWorkAreaJPanel(userProcessContainer, account, (CareTakerOrganization)organization, enterprise);
     }
     
 }

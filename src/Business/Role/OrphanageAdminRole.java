@@ -11,7 +11,7 @@ import Business.Organization.OrphanageAdminOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.OrphanageAdminRole.OrphanageAdminWorkAreaJPanel;
+import ui.OrphanageAdminRole.OrphanageWorkAreaJPanel;
 
 /**
  *
@@ -20,7 +20,7 @@ import ui.OrphanageAdminRole.OrphanageAdminWorkAreaJPanel;
 public class OrphanageAdminRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new OrphanageAdminWorkAreaJPanel(userProcessContainer, account, (OrphanageAdminOrganization)organization, enterprise);
+        return new OrphanageWorkAreaJPanel(userProcessContainer, account, (OrphanageAdminOrganization)organization, enterprise);
     }
     
 }
