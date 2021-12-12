@@ -27,6 +27,17 @@ public abstract class WorkRequest {
     private Employee customer;
     private UserAccount delivery;
     private UserAccount supplierAdmin;
+    private String networkName;
+
+    public String getNetworkName() {
+        return networkName;
+    }
+
+    public void setNetworkName(String networkName) {
+        this.networkName = networkName;
+    }
+    
+    
 
     public UserAccount getSupplierAdmin() {
         return supplierAdmin;

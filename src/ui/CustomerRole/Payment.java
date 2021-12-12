@@ -27,15 +27,18 @@ public class Payment extends javax.swing.JPanel {
     WorkRequest workRequest;
     JPanel userProcessContainer;
     EcoSystem ecoSystem;
+    Order order;
     /**
      * Creates new form Payment
      */
-    public Payment(JPanel userProcessContainer, WorkRequest workRequest, Enterprise enterprise, EcoSystem ecoSystem) {
+    public Payment(JPanel userProcessContainer, WorkRequest workRequest, Enterprise enterprise, EcoSystem ecoSystem, Order order) {
         initComponents();
         this.enterprise = enterprise;
         this.workRequest = workRequest;
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecoSystem;
+        this.order = order;
+        lblTotal.setText(String.valueOf(order.totalSuperMarket()));
     }
 
     /**
@@ -53,6 +56,8 @@ public class Payment extends javax.swing.JPanel {
         txtCard = new javax.swing.JTextField();
         btnCompletePayment = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        lblTotal = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("Name");
 
@@ -78,36 +83,45 @@ public class Payment extends javax.swing.JPanel {
             }
         });
 
+        lblTotal.setText("<Order Total>");
+
+        jLabel3.setText("Order Total:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(454, Short.MAX_VALUE)
-                .addComponent(btnCompletePayment)
-                .addGap(118, 118, 118))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
+                        .addGap(17, 17, 17)
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(btnCompletePayment))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(txtCard)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(btnBack)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtName)
+                            .addComponent(txtCard, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTotal))))
+                .addGap(362, 362, 362))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(76, 76, 76)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblTotal))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,7 +131,7 @@ public class Payment extends javax.swing.JPanel {
                     .addComponent(txtCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addComponent(btnCompletePayment)
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addGap(119, 119, 119))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,8 +147,8 @@ public class Payment extends javax.swing.JPanel {
         }
         if(checkCardValid(txtCard.getText())){
             Employee customer = new Employee(txtName.getText(), txtCard.getText());
-//        ecoSystem.getWorkQueue().getWorkRequestList().add(order);
-            JOptionPane.showMessageDialog(this, "Thankyou for your donation");
+            ecoSystem.getWorkQueue().getWorkRequestList().add(order);
+            JOptionPane.showMessageDialog(this, "Thankyou for your for shopping with us");
             workRequest.setStatus("waiting for supermarket admin to accept");
             System.out.println("order placed");
         }else{
@@ -160,6 +174,8 @@ public class Payment extends javax.swing.JPanel {
     private javax.swing.JButton btnCompletePayment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JTextField txtCard;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables

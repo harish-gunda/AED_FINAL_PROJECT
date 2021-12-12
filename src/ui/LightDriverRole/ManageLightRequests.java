@@ -4,6 +4,8 @@
  */
 package ui.LightDriverRole;
 
+import ui.HeavyDriverRole.*;
+import ui.LightDriverRole.*;
 import ui.SupplierAdminRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -54,6 +56,7 @@ public class ManageLightRequests extends javax.swing.JPanel {
         tblDetails = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
         btnOrderDetails = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,14 +98,23 @@ public class ManageLightRequests extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnOrderDetails)
                         .addGap(54, 54, 54)
                         .addComponent(btnProcess))
@@ -118,7 +130,8 @@ public class ManageLightRequests extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProcess)
-                    .addComponent(btnOrderDetails))
+                    .addComponent(btnOrderDetails)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -161,10 +174,16 @@ public class ManageLightRequests extends javax.swing.JPanel {
         layout.next(userProcessConatiner);
     }//GEN-LAST:event_btnProcessActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        populateRequests();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrderDetails;
     private javax.swing.JButton btnProcess;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblDetails;

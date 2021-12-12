@@ -78,13 +78,13 @@ public class ManageRequests extends javax.swing.JPanel {
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Sender", "Receiver", "SenderEnterprise", "Receiver Enterprise", "Status"
+                "Sender", "Receiver", "SenderEnterprise", "Receiver Enterprise", "Status", "Sender Network", "Delivery", "Supplier Admin"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -310,6 +310,7 @@ public class ManageRequests extends javax.swing.JPanel {
                 }
             }
         }
+        populateRequests();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
@@ -341,12 +342,15 @@ public class ManageRequests extends javax.swing.JPanel {
         model.setRowCount(0);
         for(WorkRequest workRequest:ecoSystem.getWorkQueue().getWorkRequestList()){
             if(workRequest.getSupplierEnterprise()!=null && workRequest.getSupplierEnterprise().getName().equals(enterprise.getName())){
-                Object[] row = new Object[5];
+                Object[] row = new Object[8];
                 row[0] = workRequest;
                 row[1] = workRequest.getReceiver();
                 row[2] = workRequest.getSenderEnterprise();
                 row[3] = workRequest.getReceiverEnterprise();
                 row[4] = workRequest.getStatus();
+                row[5] = workRequest.getNetworkName();
+                row[6] = workRequest.getDelivery();
+                row[7] = workRequest.getSupplierAdmin();
                 model.addRow(row);
             }
         }

@@ -4,8 +4,12 @@
  */
 package ui.LightDriverRole;
 
+import Business.Enterprise.Enterprise;
+import ui.HeavyDriverRole.*;
+import ui.LightDriverRole.*;
 import Business.WorkQueue.Order;
 import Business.WorkQueue.Product;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -24,6 +28,7 @@ public class ProcessLightRequests extends javax.swing.JPanel {
         initComponents();
         this.order = order;
         this.userProcessContainer = userProcessContainer;
+        System.out.println(order.getReceiver());
     }
 
     /**
@@ -37,11 +42,19 @@ public class ProcessLightRequests extends javax.swing.JPanel {
 
         txtStatus = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
 
         jButton1.setText("Complete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
             }
         });
 
@@ -55,6 +68,10 @@ public class ProcessLightRequests extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(59, 59, 59))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backJButton)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,7 +80,9 @@ public class ProcessLightRequests extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(backJButton)
+                .addGap(168, 168, 168))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -91,8 +110,16 @@ public class ProcessLightRequests extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Order processed");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables

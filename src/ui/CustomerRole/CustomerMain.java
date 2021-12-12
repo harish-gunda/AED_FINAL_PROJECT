@@ -44,6 +44,7 @@ public class CustomerMain extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnPrevious = new javax.swing.JButton();
 
         jButton1.setText("Buy Products");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +60,13 @@ public class CustomerMain extends javax.swing.JPanel {
             }
         });
 
+        btnPrevious.setText("Previous Orders");
+        btnPrevious.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPreviousActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,9 +74,10 @@ public class CustomerMain extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(263, 263, 263)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addGap(283, 283, 283))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
@@ -80,7 +89,9 @@ public class CustomerMain extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addGap(59, 59, 59)
                 .addComponent(jButton2)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addComponent(btnPrevious)
+                .addGap(189, 189, 189))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -100,8 +111,17 @@ public class CustomerMain extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
+        // TODO add your handling code here:
+        PreviousOrders customerMain = new PreviousOrders(userProcessContainer, enterprise, userAccount, ecoSystem);
+        userProcessContainer.add("donation", customerMain);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnPreviousActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPrevious;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables

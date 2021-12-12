@@ -156,7 +156,7 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
         }else{
             JOptionPane.showMessageDialog(this, "This order was rejected earlier");
         }
-        
+        populateRequests();
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed

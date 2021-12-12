@@ -7,6 +7,7 @@ package ui.SalesSupervisorRole;
 import Business.EcoSystem;
 import ui.SalesPersonRole.*;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.Order;
@@ -42,6 +43,16 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.ecoSystem = ecoSystem;
         order = new Order();
+        Network net = null;
+        for(Network network:ecoSystem.getNetworkList()){
+            System.out.println(network.getEnterpriseDirectory());
+            for(Enterprise ent:network.getEnterpriseDirectory().getEnterpriseList()){
+                if(ent.getName().equals(superMarketEnterprise.getName())){
+                    net = network;
+                }
+        }
+        }
+        order.setNetworkName(net.getName());
         order.setSender(account);
         order.setSenderEnterprise(superMarketEnterprise);
         order.setReceiverEnterprise(distributorenterprise);
@@ -287,8 +298,7 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         populateProductList();
-        DefaultTableModel model = (DefaultTableModel) tblOrderProductList.getModel();
-        model.setRowCount(0);
+        populateOrder();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
 
