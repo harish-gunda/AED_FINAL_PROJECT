@@ -20,6 +20,11 @@ public class SuppliesWorkRequest extends WorkRequest{
     public void setAmount(int amount) {
         this.amount = amount;
     }
+    
+    @Override
+    public String toString(){
+        return this.getMessage();
+    }
 
 }
 
