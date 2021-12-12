@@ -18,8 +18,9 @@ import ui.DistributorAdminRole.DistributorAdmWorkAreaJPanel;
  * @author riddhimedakkar
  */
 public class CustomerRole extends Role{
+    
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CustomerWorkArea(userProcessContainer, enterprise, business, account);
+    public JPanel createWorkArea(JPanel userProcessContainer,  EcoSystem ecoSystem, UserAccount userAccount) {
+        return new CustomerWorkArea(userProcessContainer, ecoSystem, userAccount);
     }
 }
