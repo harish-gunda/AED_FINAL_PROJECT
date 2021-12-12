@@ -9,8 +9,8 @@ import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import ui.AdministrativeRole.ManageEmployeeJPanel;
-import ui.AdministrativeRole.ManageUserAccountJPanel;
+import ui.AdministrativeRole.ManageCustomer;
+import ui.AdministrativeRole.ManageUserAccount;
 
 /**
  *

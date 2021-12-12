@@ -29,6 +29,7 @@ public abstract class Enterprise extends Organization{
         SuperMarket("SuperMarket"),
         Distributor("Distributor"),
         Supplier("Supplier"),
+        Customer("Customer"),
         
         Orphanage("Orphanage");
         
