@@ -285,7 +285,7 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
         for(WorkRequest workRequest:ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(workRequest.getReceiverEnterprise().getName().equals(enterprise.getName()) && (workRequest.getStatus().contains("Accepted by Distributor") || workRequest.getStatus().contains("Raised request to supplier"))){
+            if(workRequest.getReceiverEnterprise().getName().equals(enterprise.getName()) && (workRequest.getStatus().contains("Accepted by Distributor"))){
                 Object[] row = new Object[5];
                 row[0] = workRequest;
                 row[1] = workRequest.getReceiver();

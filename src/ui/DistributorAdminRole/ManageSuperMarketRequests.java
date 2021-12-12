@@ -51,6 +51,7 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDetails = new javax.swing.JTable();
         btnOrderDetails = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,6 +100,13 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
             }
         });
 
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,30 +114,38 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(btnAccept)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnOrderDetails)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnReject))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(btnAccept)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnOrderDetails)
+                                .addGap(35, 35, 35)
+                                .addComponent(btnReject))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 60, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnRefresh)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
+                .addComponent(btnRefresh)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAccept)
                     .addComponent(btnReject)
                     .addComponent(btnOrderDetails))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59))
         );
@@ -144,10 +160,14 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
         }
         
         Order order = (Order)tblRequest.getValueAt(selectedRow, 0);
+        if(order.getReceiver()!=null){
+            JOptionPane.showMessageDialog(this, "This order has been already picked");
+            return;
+        }
         order.setReceiver(userAccount);
         if(!order.getStatus().contains("Rejected")){
             order.setStatus("Accepted by Distributor");
-            JOptionPane.showMessageDialog(this, "This order has been accepted");
+            JOptionPane.showMessageDialog(this, "This order has been already accepted");
         }else{
             JOptionPane.showMessageDialog(this, "This order was rejected earlier");
         }
@@ -163,6 +183,10 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
         }
         
         Order order = (Order)tblRequest.getValueAt(selectedRow, 0);
+        if(order.getReceiver()!=null){
+            JOptionPane.showMessageDialog(this, "This order has been already picked");
+            return;
+        }
         order.setReceiver(userAccount);
         if(!order.getStatus().contains("Accepted")){
             order.setStatus("Rejected by Distributor");
@@ -194,10 +218,17 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnOrderDetailsActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateRequests();
+
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnOrderDetails;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnReject;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

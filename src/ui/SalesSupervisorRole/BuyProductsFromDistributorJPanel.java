@@ -70,6 +70,7 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
         btnAdd = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
 
         tblOrderProductList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,6 +134,13 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,11 +154,6 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
                                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
                                 .addComponent(btnSearch))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBack)
-                                .addGap(154, 154, 154)
-                                .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(267, 267, 267)
                                 .addComponent(jLabel2)))
@@ -169,6 +172,14 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
                 .addGap(257, 257, 257)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(btnBack)
+                .addGap(154, 154, 154)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefresh)
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +187,8 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(btnBack))
+                    .addComponent(btnBack)
+                    .addComponent(btnRefresh))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,6 +237,7 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
         if(check){
            Product product = new Product(((Product)tblProductList.getValueAt(selectedRow, 0)).getName(),((Product)tblProductList.getValueAt(selectedRow, 0)).getDescription());
            product.setDistributorPrice(((Product)tblProductList.getValueAt(selectedRow, 0)).getDistributorPrice());
+           product.setSuperMarketPrice(product.getDistributorPrice());
            order.getProductList().add(product);
         }
         ((Product)tblProductList.getValueAt(selectedRow, 0)).reduceQuantity();
@@ -271,10 +284,18 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateProductList();
+        DefaultTableModel model = (DefaultTableModel) tblOrderProductList.getModel();
+        model.setRowCount(0);
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton jButton1;

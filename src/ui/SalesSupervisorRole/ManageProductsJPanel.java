@@ -126,9 +126,9 @@ public class ManageProductsJPanel extends javax.swing.JPanel {
         for(Product product:enterprise.getProductList()){
             Object[] row = new Object[5];
             row[0] = product;
-            row[1] = product.getName();
-            row[2] = product.getDescription();
-            row[3] = product.getDistributorPrice();
+            row[1] = product.getDescription();
+            row[2] = product.getDistributorPrice();
+            row[3] = product.getSuperMarketPrice();
             row[4] = product.getQuantity();
             model.addRow(row);
         }

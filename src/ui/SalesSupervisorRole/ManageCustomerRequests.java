@@ -145,6 +145,10 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
         }
         
         Order order = (Order)tblRequest.getValueAt(selectedRow, 0);
+        if(order.getReceiver()!=null){
+            JOptionPane.showMessageDialog(this, "This order has been already picked");
+            return;
+        }
         order.setReceiver(userAccount);
         if(!order.getStatus().contains("Rejected")){
             order.setStatus("Accepted by Distributor");
@@ -164,6 +168,10 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
         }
         
         Order order = (Order)tblRequest.getValueAt(selectedRow, 0);
+        if(order.getReceiver()!=null){
+            JOptionPane.showMessageDialog(this, "This order has been already picked");
+            return;
+        }
         order.setReceiver(userAccount);
         if(!order.getStatus().contains("Accepted")){
             order.setStatus("Rejected by Distributor");
@@ -181,6 +189,7 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
             return;
         }
         Order order = (Order)tblRequest.getValueAt(selectedRow, 0);
+        
         order.setReceiver(userAccount);
         DefaultTableModel model = (DefaultTableModel) tblDetails.getModel();
         model.setRowCount(0);
@@ -209,7 +218,7 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
         for(WorkRequest workRequest:ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(workRequest.getReceiverEnterprise().getName().equals(enterprise.getName())){
+            if(workRequest.getReceiverEnterprise()!=null && workRequest.getReceiverEnterprise().getName().equals(enterprise.getName())){
                 Object[] row = new Object[5];
                 row[0] = workRequest;
                 row[1] = workRequest.getReceiver();
