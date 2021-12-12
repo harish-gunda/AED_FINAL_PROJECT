@@ -133,7 +133,7 @@ public class ProcessManagerWorkRequestJPanel extends javax.swing.JPanel {
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
         request.setAmount(Integer.parseInt(amountTxtField.getText()));
-        request.setStatus("Completed");
+        request.setStatus("sent to customers");
         resultJTextField.setText("");
         amountTxtField.setText("");
     }//GEN-LAST:event_submitJButtonActionPerformed

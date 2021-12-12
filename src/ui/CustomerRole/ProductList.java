@@ -40,13 +40,13 @@ private JPanel userProcessContainer;
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.customerEnterprise = customerEnterprise;
-        this.superMarketEnterprise = superMarketEnterprise;
+        this.superMarketEnterprise = superMarketenterprise;
         this.userAccount = account;
         this.ecoSystem = ecoSystem;
         order = new Order();
         order.setSender(account);
         order.setSenderEnterprise(customerEnterprise);
-        order.setReceiverEnterprise(superMarketEnterprise);
+        order.setReceiverEnterprise(superMarketenterprise);
         order.setStatus("waiting for supermarket to accept");
         populateProductList();
     }
@@ -283,6 +283,11 @@ public void populateProductList() {
         DefaultTableModel model = (DefaultTableModel) tblProductList.getModel();
         
         model.setRowCount(0);
+        System.out.println(superMarketEnterprise);
+        if(superMarketEnterprise.getProductList()==null){
+            JOptionPane.showMessageDialog(this, "Item not available");
+            return;
+        }
         for(Product product:superMarketEnterprise.getProductList()){
             Object[] row = new Object[5];
             row[0] = product;

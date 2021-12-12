@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
     
-    private OrganizationDirectory directory;
+    
     private JPanel userProcessContainer;
 //    private OrphanageAdminOrganization orphanageAdminOrganization;
     private UserAccount userAccount;
@@ -36,8 +36,7 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
      */
     public ManageCareTakerRequestJPanel(JPanel userJPanel, Enterprise enterprise,EcoSystem ecoSystem, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;
-        this.directory = directory;
+        this.userProcessContainer = userJPanel;
         this.userAccount = userAccount;
         this.ecoSystem = ecoSystem;
         this.enterprise = enterprise;
@@ -52,12 +51,13 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         for(WorkRequest request : ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(request.getSenderEnterprise().equals(enterprise)){
-                Object[] row = new Object[4];
+            if(request.getSenderEnterprise()!=null && request.getSenderEnterprise().equals(enterprise)){
+                Object[] row = new Object[5];
                 row[0] = request;
                 row[1] = request.getSender().getEmployee().getName();
                 row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-                row[3] = request.getStatus();
+                row[3] = ((SuppliesWorkRequest)request).getAmount();
+                row[4] = request.getStatus();
                 model.addRow(row);
             }
             
@@ -82,20 +82,20 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
         workRequestJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "Message", "Sender", "Receiver", "Amount", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, true, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -138,12 +138,12 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(95, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(ProcessManagerButton)
-                    .addComponent(AssignTomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(162, 162, 162))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AssignTomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ProcessManagerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(134, 134, 134))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +156,7 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
                 .addComponent(jButton3)
                 .addGap(16, 16, 16)
                 .addComponent(ProcessManagerButton)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addGap(170, 170, 170))
         );
     }// </editor-fold>//GEN-END:initComponents
 

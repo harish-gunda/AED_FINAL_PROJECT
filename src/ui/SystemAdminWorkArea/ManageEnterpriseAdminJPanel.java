@@ -9,6 +9,7 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Role.AdminRole;
+import Business.Role.CustomerAdminRole;
 import Business.Role.DistributorAdminRole;
 import Business.Role.SalesSupervisorRole;
 import Business.Role.SupplierAdminRole;
@@ -262,6 +263,8 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         } 
         else if(enterprise.getEnterpriseType()==Enterprise.EnterpriseType.Orphanage){
             UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new OrphanageAdminRole());
+        }else if(enterprise.getEnterpriseType()==Enterprise.EnterpriseType.Customer){
+            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new CustomerAdminRole());
         }
         
         populateTable();

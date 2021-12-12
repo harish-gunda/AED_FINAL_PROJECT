@@ -9,10 +9,13 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.WorkQueue.Order;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import ui.SalesPersonRole.SalesPersonTransactionHome;
 
 /**
@@ -20,17 +23,17 @@ import ui.SalesPersonRole.SalesPersonTransactionHome;
  * @author riddhimedakkar
  */
 public class Payment extends javax.swing.JPanel {
-Enterprise enterprise;
-    Order order;
+    Enterprise enterprise;
+    WorkRequest workRequest;
     JPanel userProcessContainer;
     EcoSystem ecoSystem;
     /**
      * Creates new form Payment
      */
-    public Payment(JPanel userProcessContainer, Order order, Enterprise enterprise, EcoSystem ecoSystem) {
+    public Payment(JPanel userProcessContainer, WorkRequest workRequest, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
         this.enterprise = enterprise;
-        this.order = order;
+        this.workRequest = workRequest;
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecoSystem;
     }
@@ -128,10 +131,16 @@ Enterprise enterprise;
             JOptionPane.showMessageDialog(this, "All fields are mandatory");
             return;
         }
-        Employee customer = new Employee(txtName.getText(), txtCard.getText());
-        ecoSystem.getWorkQueue().getWorkRequestList().add(order);
-        JOptionPane.showMessageDialog(this, "Order placed successfully");
-        System.out.println("order placed");
+        if(checkCardValid(txtCard.getText())){
+            Employee customer = new Employee(txtName.getText(), txtCard.getText());
+//        ecoSystem.getWorkQueue().getWorkRequestList().add(order);
+            JOptionPane.showMessageDialog(this, "Thankyou for your donation");
+            workRequest.setStatus("waiting for supermarket admin to accept");
+            System.out.println("order placed");
+        }else{
+            JOptionPane.showMessageDialog(this, "Please enter valid card number");
+        }
+        
     }//GEN-LAST:event_btnCompletePaymentActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -154,4 +163,10 @@ Enterprise enterprise;
     private javax.swing.JTextField txtCard;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
+    public boolean checkCardValid(String card){
+        Pattern pattern = Pattern.compile("[0-9]{16}", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(card);
+        return matcher.find();
+    }
+
 }

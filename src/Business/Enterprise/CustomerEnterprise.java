@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class CustomerEnterprise extends Enterprise{
 
-    public CustomerEnterprise(String name, EnterpriseType type) {
+    public CustomerEnterprise(String name) {
         super(name,Enterprise.EnterpriseType.Customer);
     }
     @Override

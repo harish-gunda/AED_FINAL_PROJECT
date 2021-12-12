@@ -14,6 +14,8 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -29,7 +31,7 @@ public class Donate extends javax.swing.JPanel {
      */
     public Donate(JPanel userProcessContainer, SuppliesWorkRequest request) {
         initComponents();
-        this.enterprise = enterprise;
+        this.userProcessContainer = userProcessContainer;
         this.request = request;
     }
 
@@ -137,10 +139,15 @@ public class Donate extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "All fields are mandatory");
             return;
         }
-        Employee customer = new Employee(txtName.getText(), txtCard.getText());
-//        ecoSystem.getWorkQueue().getWorkRequestList().add(request);
-        JOptionPane.showMessageDialog(this, "Order placed successfully");
-        System.out.println("order placed");
+        if(checkCardValid(txtCard.getText())){
+            Employee customer = new Employee(txtName.getText(), txtCard.getText());
+//        ecoSystem.getWorkQueue().getWorkRequestList().add(order);
+            JOptionPane.showMessageDialog(this, "Thankyou for your donation");
+            System.out.println("order placed");
+            request.setStatus("donation received from customer");
+        }else{
+            JOptionPane.showMessageDialog(this, "Please enter valid card number");
+        }
     }//GEN-LAST:event_btnCompletePaymentActionPerformed
 
 
@@ -152,4 +159,9 @@ public class Donate extends javax.swing.JPanel {
     private javax.swing.JTextField txtCard;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
+    public boolean checkCardValid(String card){
+        Pattern pattern = Pattern.compile("[0-9]{16}", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(card);
+        return matcher.find();
+    }
 }

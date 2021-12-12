@@ -7,10 +7,12 @@ package ui.CustomerRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import ui.SalesSupervisorRole.BuyProductsFromDistributorJPanel;
 
 /**
  *
@@ -19,16 +21,19 @@ import javax.swing.JPanel;
 public class CustomerWorkArea extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private EcoSystem ecosystem;
+    private EcoSystem ecoSystem;
     private UserAccount userAccount;
+    private Enterprise enterprise;
     /**
      * Creates new form CustomerWorkArea
      */
-    public CustomerWorkArea(JPanel userProcessContainer, EcoSystem ecoSystem, UserAccount userAccount) {
+    public CustomerWorkArea(JPanel userProcessContainer, EcoSystem ecoSystem, UserAccount userAccount,Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.ecosystem = ecoSystem;
+        this.ecoSystem = ecoSystem;
         this.userAccount = userAccount;
+        this.enterprise = enterprise;
+        populateNetworkCombo();
     }
     
 
@@ -43,31 +48,42 @@ public class CustomerWorkArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cboxNetwork = new javax.swing.JComboBox<>();
+        btnRequest1 = new javax.swing.JButton();
+        cboxDistributor = new javax.swing.JComboBox<>();
+        btnRequest = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Select a Supermarket");
 
-        jButton1.setText("Select a network");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setText("SuperMarket");
+
+        jLabel4.setText("Network");
+
+        cboxNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cboxNetworkActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Select a Supermarket");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRequest1.setText("Select Network");
+        btnRequest1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRequest1ActionPerformed(evt);
+            }
+        });
+
+        cboxDistributor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnRequest.setText("Select Super Market");
+        btnRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestActionPerformed(evt);
             }
         });
 
@@ -76,54 +92,123 @@ public class CustomerWorkArea extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(262, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(187, 187, 187)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboxDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRequest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRequest1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)))
                 .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(136, 136, 136)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(40, 40, 40)
+                    .addComponent(cboxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(btnRequest1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addContainerGap(331, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(cboxDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRequest))
+                .addGap(293, 293, 293))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void cboxNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNetworkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        //        Network req=null;
+        //        System.out.println(cboxNetwork.getSelectedItem().toString());
+        //        for(Network network:ecoSystem.getNetworkList()){
+            //            if(network.getName().equals(cboxNetwork.getSelectedItem().toString())){
+                //                req = network;
+                //            }
+            //        }
+        //        for(Enterprise supplierEnterprise:req.getEnterpriseDirectory().getEnterpriseList()){
+            //            if(supplierEnterprise.getEnterpriseType().equals(Enterprise.EnterpriseType.Supplier)){
+                //                cboxSupplier.addItem(supplierEnterprise.getName());
+                //            }
+            //        }
+    }//GEN-LAST:event_cboxNetworkActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRequest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequest1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+
+        Network req=null;
+        System.out.println(cboxNetwork.getSelectedItem().toString());
+        for(Network network:ecoSystem.getNetworkList()){
+            if(network.getName().equals(cboxNetwork.getSelectedItem().toString())){
+                req = network;
+            }
+        }
+        for(Enterprise supplierEnterprise:req.getEnterpriseDirectory().getEnterpriseList()){
+            System.out.println(supplierEnterprise.getEnterpriseType().getValue());
+            System.out.println(Enterprise.EnterpriseType.SuperMarket.getValue());
+            if(supplierEnterprise.getEnterpriseType().getValue().equals(Enterprise.EnterpriseType.SuperMarket.getValue())){
+                System.out.println("inside if condition");
+                cboxDistributor.addItem(supplierEnterprise.getName());
+            }
+        }
+    }//GEN-LAST:event_btnRequest1ActionPerformed
+
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
+        // TODO add your handling code here:
+
+        Network req=null;
+        System.out.println(cboxNetwork.getSelectedItem().toString());
+        for(Network network:ecoSystem.getNetworkList()){
+            if(network.getName().equals(cboxNetwork.getSelectedItem().toString())){
+                req = network;
+            }
+        }
+
+        for(Enterprise supplierEnterprise:req.getEnterpriseDirectory().getEnterpriseList()){
+            System.out.println(supplierEnterprise.getName());
+            System.out.println(cboxDistributor.getSelectedItem());
+            if(supplierEnterprise.getName().equals(cboxDistributor.getSelectedItem().toString())){
+                ProductList buyProductsFromDistributorJPanel = new ProductList(userProcessContainer, userAccount, supplierEnterprise, enterprise,ecoSystem);
+                userProcessContainer.add("manageEmployeeJPanel", buyProductsFromDistributorJPanel);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            }
+        }
+    }//GEN-LAST:event_btnRequestActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton btnRequest;
+    private javax.swing.JButton btnRequest1;
+    private javax.swing.JComboBox<String> cboxDistributor;
+    private javax.swing.JComboBox<String> cboxNetwork;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+    private void populateNetworkCombo(){
+        cboxDistributor.removeAllItems();
+        cboxNetwork.removeAllItems();
+        for(Network network:ecoSystem.getNetworkList()){
+            cboxNetwork.addItem(network.getName());
+        }
+    }
+
 }

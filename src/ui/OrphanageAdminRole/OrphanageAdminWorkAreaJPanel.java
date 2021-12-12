@@ -24,8 +24,8 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.userAccount = userAccount;
-        this.ecoSystem = ecoSystem;
+        this.userAccount = account;
+        this.ecoSystem = business;
         valueLabel.setText(enterprise.getName());
     }
     

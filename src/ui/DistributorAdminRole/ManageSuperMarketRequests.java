@@ -151,7 +151,7 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
         }else{
             JOptionPane.showMessageDialog(this, "This order was rejected earlier");
         }
-        
+        populateRequests();
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
@@ -170,6 +170,7 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
         }else{
             JOptionPane.showMessageDialog(this, "This order was accepted earlier");
         }
+        populateRequests();
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnOrderDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderDetailsActionPerformed
@@ -208,7 +209,7 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
         for(WorkRequest workRequest:ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(workRequest.getReceiverEnterprise().getName().equals(enterprise.getName())){
+            if(workRequest.getReceiverEnterprise()!=null && workRequest.getReceiverEnterprise().getName().equals(enterprise.getName())){
                 Object[] row = new Object[5];
                 row[0] = workRequest;
                 row[1] = workRequest.getReceiver();

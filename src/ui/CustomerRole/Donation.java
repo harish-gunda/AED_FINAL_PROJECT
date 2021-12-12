@@ -118,12 +118,14 @@ JPanel userProcessContainer;
         DefaultTableModel model = (DefaultTableModel) RequestTable.getModel();
         model.setRowCount(0);
         for(WorkRequest request:ecoSystem.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[5];
-            row[0] = request;
-            row[1] = ((SuppliesWorkRequest)request).getAmount();
-            row[2] = request.getSender();
-            row[3] = request.getStatus();
-            model.addRow(row);
+            if(request.getStatus()!=null && request.getStatus().toLowerCase().contains("sent to customer")){
+                Object[] row = new Object[5];
+                row[0] = request;
+                row[1] = ((SuppliesWorkRequest)request).getAmount();
+                row[2] = request.getSender();
+                row[3] = request.getStatus();
+                model.addRow(row);
+            }
         }
     }
 }

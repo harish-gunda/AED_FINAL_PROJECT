@@ -17,17 +17,19 @@ import ui.SalesSupervisorRole.SelectDistributorJPanel;
  * @author riddhimedakkar
  */
 public class CustomerMain extends javax.swing.JPanel {
-JPanel userProcessContainer;
-    EcoSystem ecoSystem;
-    UserAccount userAccount;
+    private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
+    private UserAccount userAccount;
+    private Enterprise enterprise;
     /**
      * Creates new form CustomerMain
      */
-    public CustomerMain(JPanel userProcessContainer, EcoSystem ecoSystem, UserAccount userAccount) {
+    public CustomerMain(JPanel userProcessContainer, EcoSystem ecoSystem, UserAccount userAccount, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecoSystem;
         this.userAccount = userAccount;
+        this.enterprise = enterprise;
     }
     
 
@@ -84,7 +86,7 @@ JPanel userProcessContainer;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         CustomerWorkArea customerMain = new CustomerWorkArea(userProcessContainer, ecoSystem, userAccount);
+        CustomerWorkArea customerMain = new CustomerWorkArea(userProcessContainer, ecoSystem, userAccount, enterprise);
         userProcessContainer.add("CustomerWorkArea", customerMain);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

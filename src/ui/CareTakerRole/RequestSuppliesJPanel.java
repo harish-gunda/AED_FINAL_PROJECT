@@ -13,6 +13,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SuppliesWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -34,6 +35,7 @@ public class RequestSuppliesJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = userAccount;
+        this.ecoSystem = ecoSystem;
         valueLabel.setText(enterprise.getName());
     }
 
@@ -152,12 +154,22 @@ public class RequestSuppliesJPanel extends javax.swing.JPanel {
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
 
         String message = messageJTextField.getText();
-        int amount = Integer.parseInt(amountTxtField.getText());
-        SuppliesWorkRequest request = new SuppliesWorkRequest();
-        request.setSender(userAccount);
-        request.setMessage(message);
-        request.setAmount(amount);
-        ecoSystem.getWorkQueue().getWorkRequestList().add(request);
+        try{
+            int amount = Integer.parseInt(amountTxtField.getText());
+            SuppliesWorkRequest request = new SuppliesWorkRequest();
+            request.setSender(userAccount);
+            request.setSenderEnterprise(enterprise);
+            request.setMessage(message);
+            request.setAmount(amount);
+            request.setStatus("pending approval from orphanage admin");
+            ecoSystem.getWorkQueue().getWorkRequestList().add(request);
+            JOptionPane.showMessageDialog(this, "Request raised successfully");
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "please enter numbers for amount");
+            return;
+        }
+        
+        
                 
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 

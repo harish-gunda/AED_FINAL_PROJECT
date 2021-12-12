@@ -26,6 +26,6 @@ public class CustomerRole extends Role{
             Organization organization, 
             Enterprise enterprise, 
             EcoSystem business) {
-        return new CustomerMain(userProcessContainer, business, account);
+        return new CustomerMain(userProcessContainer, business, account, enterprise);
     }
 }
