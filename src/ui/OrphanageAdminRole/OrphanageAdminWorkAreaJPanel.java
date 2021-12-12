@@ -2,8 +2,10 @@
 
 package ui.OrphanageAdminRole;
 
+import Business.EcoSystem;
 import ui.AdministrativeRole.*;
 import Business.Enterprise.Enterprise;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -15,11 +17,15 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     Enterprise enterprise;
+    EcoSystem ecoSystem;
+    UserAccount userAccount;
     /** Creates new form AdminWorkAreaJPanel */
-    public OrphanageAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public OrphanageAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise,EcoSystem ecoSystem,UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.userAccount = userAccount;
+        this.ecoSystem = ecoSystem;
         valueLabel.setText(enterprise.getName());
     }
     
@@ -87,7 +93,7 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        ManageOrphanageUserAccountJPanel manageOrphanageUserAccount = new ManageOrphanageUserAccountJPanel(userProcessContainer,JPanel userJPanel, Enterprise enterprise,EcoSystem ecoSystem, UserAccount userAccount);
+        ManageOrphanageUserAccountJPanel manageOrphanageUserAccount = new ManageOrphanageUserAccountJPanel(userProcessContainer,enterprise);
         userProcessContainer.add("manageOrphanageUserAccountJPanel", manageOrphanageUserAccount);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -114,7 +120,7 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void ManageRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageRequestButtonActionPerformed
         // TODO add your handling code here:
-        ManageCareTakerRequestJPanel manageCareTakerRequestJPanel = new ManageCareTakerRequestJPanel(userProcessContainer, useraccount);
+        ManageCareTakerRequestJPanel manageCareTakerRequestJPanel = new ManageCareTakerRequestJPanel(userProcessContainer, enterprise, ecoSystem, userAccount);
         userProcessContainer.add("manageCareTakerRequestJPanel", manageCareTakerRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
