@@ -175,7 +175,6 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
 
         ManageCustomerRequests manageEmployeeJPanel = new ManageCustomerRequests(userProcessContainer, enterprise, userAccount, ecoSystem);
         userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
-
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageEmployeeJButton1ActionPerformed
