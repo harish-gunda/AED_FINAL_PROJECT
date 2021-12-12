@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.SupplierAdminRole;
+package ui.SalesSupervisorRole;
 
+import ui.SupplierAdminRole.*;
 import Business.EcoSystem;
 import ui.AdministrativeRole.*;
 import Business.Employee.Employee;
@@ -21,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Administrator
  */
-public class ManageSupplierUserAccountJPanel extends javax.swing.JPanel {
+public class ManageSalesSupervisorUserAccountJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageSupplierUserAccountJPanel
@@ -30,7 +31,7 @@ public class ManageSupplierUserAccountJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private EcoSystem system;
 
-    public ManageSupplierUserAccountJPanel(JPanel container, Enterprise enterprise, EcoSystem ecoSystem) {
+    public ManageSalesSupervisorUserAccountJPanel(JPanel container, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
         this.enterprise = enterprise;
         this.container = container;

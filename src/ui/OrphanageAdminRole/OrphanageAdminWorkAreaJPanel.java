@@ -93,7 +93,7 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        ManageOrphanageUserAccountJPanel manageOrphanageUserAccount = new ManageOrphanageUserAccountJPanel(userProcessContainer,enterprise);
+        ManageOrphanageUserAccountJPanel manageOrphanageUserAccount = new ManageOrphanageUserAccountJPanel(userProcessContainer,enterprise,ecoSystem);
         userProcessContainer.add("manageOrphanageUserAccountJPanel", manageOrphanageUserAccount);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

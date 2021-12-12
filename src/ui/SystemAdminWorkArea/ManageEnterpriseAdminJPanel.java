@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.Organization;
 import Business.Role.AdminRole;
 import Business.Role.CustomerAdminRole;
 import Business.Role.DistributorAdminRole;
@@ -17,6 +18,7 @@ import Business.Role.OrphanageAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -252,6 +254,40 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
+        Enterprise inEnterprise=null;
+        Organization inOrganization=null;
+        boolean userAccount =true;
+        for(Network network:system.getNetworkList()){
+                //Step 2.a: check against each enterprise
+            for(Enterprise ent:network.getEnterpriseDirectory().getEnterpriseList()){
+                userAccount=ent.getUserAccountDirectory().checkIfUsernameIsUnique(username);
+                if(userAccount==true){
+                   //Step 3:check against each organization for each enterprise
+                   for(Organization organization:ent.getOrganizationDirectory().getOrganizationList()){
+                       userAccount=organization.getUserAccountDirectory().checkIfUsernameIsUnique(username);
+                       if(userAccount!=true){
+                           inEnterprise=ent;
+                           inOrganization=organization;
+                           break;
+                       }
+                   }
+
+                }
+                else{
+                   inEnterprise=ent;
+                   break;
+                }
+                if(inOrganization!=null){
+                    break;
+                }  
+            }
+            if(inEnterprise!=null){
+                break;
+            }
+        }
+        if(userAccount!=true){
+            JOptionPane.showMessageDialog(this, "username already exists");
+        }
         
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         if(enterprise.getEnterpriseType()==Enterprise.EnterpriseType.SuperMarket){

@@ -4,6 +4,7 @@
  */
 package ui.SalesPersonRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
@@ -27,15 +28,17 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
     private UserAccount userAccount;
     Order order;
     WorkRequest workRequest;
+    EcoSystem ecoSystem;
     /**
      * Creates new form SalesPersonTransactionHome
      */
-    public SalesPersonTransactionHome(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise) {
+    public SalesPersonTransactionHome(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.ecoSystem = ecoSystem;
         order = new Order();
         order.setSender(account);
         populateProductList();
@@ -80,6 +83,11 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         jLabel1.setText("Products List");
 
         btnSearch.setText("Search Product");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         tblProductList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -243,7 +251,7 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(order.getProductList().size()!=0){
-            CustomerDetails salesPersonTransactionHome= new CustomerDetails(userProcessContainer,order, enterprise);
+            CustomerDetails salesPersonTransactionHome= new CustomerDetails(userProcessContainer,order, ecoSystem);
             userProcessContainer.add("processWorkRequestJPanel", salesPersonTransactionHome);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -259,6 +267,11 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        populateSearchProductList();
+    }//GEN-LAST:event_btnSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

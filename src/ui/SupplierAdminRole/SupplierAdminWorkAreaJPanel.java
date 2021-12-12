@@ -93,7 +93,7 @@ public class SupplierAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        ManageSupplierUserAccountJPanel muajp = new ManageSupplierUserAccountJPanel(userProcessContainer, enterprise);
+        ManageSupplierUserAccountJPanel muajp = new ManageSupplierUserAccountJPanel(userProcessContainer, enterprise, ecoSystem);
         userProcessContainer.add("ManageUserAccountJPanel", muajp);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

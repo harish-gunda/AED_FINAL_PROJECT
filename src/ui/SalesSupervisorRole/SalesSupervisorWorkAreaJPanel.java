@@ -120,7 +120,7 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        ManageUserAccount muajp = new ManageUserAccount(userProcessContainer, enterprise);
+        ManageSalesSupervisorUserAccountJPanel muajp = new ManageSalesSupervisorUserAccountJPanel(userProcessContainer, enterprise, ecoSystem);
         userProcessContainer.add("ManageUserAccountJPanel", muajp);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

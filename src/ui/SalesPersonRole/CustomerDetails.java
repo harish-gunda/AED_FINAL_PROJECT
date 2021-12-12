@@ -4,6 +4,7 @@
  */
 package ui.SalesPersonRole;
 
+import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.WorkQueue.Order;
@@ -17,17 +18,19 @@ import javax.swing.JPanel;
  * @author harish
  */
 public class CustomerDetails extends javax.swing.JPanel {
-    Enterprise enterprise;
+    
     Order order;
     JPanel userProcessContainer;
+    EcoSystem ecoSystem;
     /**
      * Creates new form CustomerDetails
      */
-    public CustomerDetails(JPanel userProcessContainer, Order order, Enterprise enterprise) {
+    public CustomerDetails(JPanel userProcessContainer, Order order, EcoSystem ecoSystem) {
         initComponents();
-        this.enterprise = enterprise;
+        
         this.order = order;
         this.userProcessContainer = userProcessContainer;
+        this.ecoSystem = ecoSystem;
     }
 
     /**
@@ -124,7 +127,7 @@ public class CustomerDetails extends javax.swing.JPanel {
             return;
         }
         Employee customer = new Employee(txtName.getText(), txtCard.getText());
-        enterprise.getWorkQueue().getWorkRequestList().add(order);
+        ecoSystem.getWorkQueue().getWorkRequestList().add(order);
         JOptionPane.showMessageDialog(this, "Transaction complete");
     }//GEN-LAST:event_btnCompletePaymentActionPerformed
 

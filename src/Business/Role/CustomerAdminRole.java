@@ -19,6 +19,6 @@ import ui.CustomerAdminRole.CustomerAdminWorkAreaJPanel;
 public class CustomerAdminRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CustomerAdminWorkAreaJPanel(userProcessContainer, enterprise);
+        return new CustomerAdminWorkAreaJPanel(userProcessContainer, enterprise, business);
     }
 }
