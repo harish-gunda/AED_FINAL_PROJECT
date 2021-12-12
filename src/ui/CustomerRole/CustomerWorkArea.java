@@ -20,13 +20,17 @@ public class CustomerWorkArea extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem ecosystem;
-    private UserAccount account;
+    private UserAccount userAccount;
     /**
      * Creates new form CustomerWorkArea
      */
-    public CustomerWorkArea() {
+    public CustomerWorkArea(JPanel userProcessContainer, EcoSystem ecoSystem, UserAccount userAccount) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecoSystem;
+        this.userAccount = userAccount;
     }
+    
 
     
 
