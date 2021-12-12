@@ -12,9 +12,12 @@ import Business.WorkQueue.Order;
 import Business.WorkQueue.Product;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author harish
@@ -148,10 +151,15 @@ public class SuperMarketAdminDetails extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "All fields are mandatory");
             return;
         }
-        Employee customer = new Employee(txtName.getText(), txtCard.getText());
-        ecoSystem.getWorkQueue().getWorkRequestList().add(order);
-        JOptionPane.showMessageDialog(this, "Order placed successfully");
-        System.out.println("order placed");
+        if(checkCardValid(txtCard.getText())){
+            Employee customer = new Employee(txtName.getText(), txtCard.getText());
+            ecoSystem.getWorkQueue().getWorkRequestList().add(order);
+            JOptionPane.showMessageDialog(this, "Thankyou for your for shopping with us");
+            order.setStatus("waiting for distributor admin to accept");
+            System.out.println("order placed");
+        }else{
+            JOptionPane.showMessageDialog(this, "Please enter valid card number");
+        }
     }//GEN-LAST:event_btnCompletePaymentActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -176,4 +184,9 @@ public class SuperMarketAdminDetails extends javax.swing.JPanel {
     private javax.swing.JTextField txtCard;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
+    public boolean checkCardValid(String card){
+        Pattern pattern = Pattern.compile("[0-9]{16}", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(card);
+        return matcher.find();
+    }
 }

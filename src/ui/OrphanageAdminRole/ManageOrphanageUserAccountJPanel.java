@@ -289,6 +289,7 @@ public class ManageOrphanageUserAccountJPanel extends javax.swing.JPanel {
         }
         if(userAccount!=true){
             JOptionPane.showMessageDialog(this, "username already exists");
+            return;
         }
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();

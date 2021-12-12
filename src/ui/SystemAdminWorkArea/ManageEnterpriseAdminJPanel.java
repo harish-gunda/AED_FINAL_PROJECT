@@ -287,6 +287,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         }
         if(userAccount!=true){
             JOptionPane.showMessageDialog(this, "username already exists");
+            return;
         }
         
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
