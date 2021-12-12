@@ -25,7 +25,10 @@ public abstract class Role {
         SupplierManager("Supplier Manager"),
         HeavyDriver("Heavy Driver"),
         LightDriver("Light Driver"),
-        DistributorAdmin("Distributor Admin");
+        DistributorAdmin("Distributor Admin"),
+        CareTaker("Care Taker"),
+        OrphanageAdmin("Orphanage Admin");
+        
         
         private String value;
         private RoleType(String value){
