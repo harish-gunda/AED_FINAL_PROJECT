@@ -5,6 +5,7 @@
  */
 package ui.CareTakerRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.OrphanageAdminOrganization;
 import Business.Organization.Organization;
@@ -26,8 +27,9 @@ public class RequestSuppliesJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private EcoSystem ecoSystem;
 
-    public RequestSuppliesJPanel(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise) {
+    public RequestSuppliesJPanel(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -155,7 +157,7 @@ public class RequestSuppliesJPanel extends javax.swing.JPanel {
         request.setSender(userAccount);
         request.setMessage(message);
         request.setAmount(amount);
-        enterprise.getWorkQueue().getWorkRequestList().add(request);
+        ecoSystem.getWorkQueue().getWorkRequestList().add(request);
                 
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 

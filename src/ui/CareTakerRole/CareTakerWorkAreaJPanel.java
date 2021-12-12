@@ -46,15 +46,17 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         System.out.println(userAccount.getWorkQueue().getWorkRequestList());
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((SuppliesWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
+        for (WorkRequest request : business.getWorkQueue().getWorkRequestList()){
+            if(request.getSender().equals(userAccount)){
+                Object[] row = new Object[4];
+                row[0] = request.getMessage();
+                row[1] = request.getReceiver();
+                row[2] = request.getStatus();
+                model.addRow(row);
+            }
             
-            model.addRow(row);
+            
+            
         }
     }
 
@@ -72,7 +74,6 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
         workRequestJTable = new javax.swing.JTable();
         requestSuppliesJButton = new javax.swing.JButton();
         refreshTestJButton = new javax.swing.JButton();
-        resReqBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -123,14 +124,6 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        resReqBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        resReqBtn.setText("Resolve Request");
-        resReqBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resReqBtnActionPerformed(evt);
-            }
-        });
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/volunteerimage.png"))); // NOI18N
         jLabel2.setText("jLabel2");
 
@@ -150,7 +143,6 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(resReqBtn)
                     .addComponent(refreshTestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(requestSuppliesJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -167,9 +159,7 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(requestSuppliesJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refreshTestJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(resReqBtn)
-                .addGap(29, 29, 29)
+                .addGap(66, 66, 66)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(81, Short.MAX_VALUE))
         );
@@ -178,7 +168,7 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
     private void requestSuppliesJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestSuppliesJButtonActionPerformed
         // go to fundRequest Page
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestSuppliesJPanel", new RequestSuppliesJPanel(userProcessContainer, userAccount, enterprise));
+        userProcessContainer.add("RequestSuppliesJPanel", new RequestSuppliesJPanel(userProcessContainer, userAccount, enterprise,business));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_requestSuppliesJButtonActionPerformed
 
@@ -188,14 +178,6 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
-    private void resReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resReqBtnActionPerformed
-        // TODO add your handling code here:
-        // go to fundRequest Page
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("ResolveRequestsJPanel", new ResolveRequestsJPanel(userProcessContainer, userAccount,organization, enterprise, business));
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_resReqBtnActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -203,7 +185,6 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshTestJButton;
     private javax.swing.JButton requestSuppliesJButton;
-    private javax.swing.JButton resReqBtn;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

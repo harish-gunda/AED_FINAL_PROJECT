@@ -33,7 +33,7 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         userJButton = new javax.swing.JButton();
-        manageEmployeeJButton = new javax.swing.JButton();
+        manageCareTakerJButton = new javax.swing.JButton();
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
@@ -53,13 +53,13 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 150, -1));
 
-        manageEmployeeJButton.setText("Manage CareTaker");
-        manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
+        manageCareTakerJButton.setText("Manage CareTaker");
+        manageCareTakerJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageEmployeeJButtonActionPerformed(evt);
+                manageCareTakerJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 150, -1));
+        add(manageCareTakerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 150, -1));
 
         manageOrganizationJButton.setText("Manage Orphanage");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -87,33 +87,37 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        ManageOrphanageUserAccountJPanel muajp = new ManageOrphanageUserAccountJPanel(userProcessContainer, enterprise);
-        userProcessContainer.add("ManageUserAccountJPanel", muajp);
+        ManageOrphanageUserAccountJPanel manageOrphanageUserAccount = new ManageOrphanageUserAccountJPanel(userProcessContainer,JPanel userJPanel, Enterprise enterprise,EcoSystem ecoSystem, UserAccount userAccount);
+        userProcessContainer.add("manageOrphanageUserAccountJPanel", manageOrphanageUserAccount);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
 
-    private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
+    private void manageCareTakerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCareTakerJButtonActionPerformed
 
-        ManageCareTakerJPanel manageEmployeeJPanel = new ManageCareTakerJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
+        ManageCareTakerJPanel manageCareTakerJPanel = new ManageCareTakerJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("manageCareTakerJPanel", manageCareTakerJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         
-    }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
+    }//GEN-LAST:event_manageCareTakerJButtonActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
 
-        ManageOrphanageOrganizationJPanel manageOrganizationJPanel = new ManageOrphanageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
+        ManageOrphanageOrganizationJPanel manageOrphanageOrganizationJPanel = new ManageOrphanageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("manageOrphanageOrganizationJPanel", manageOrphanageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
     private void ManageRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageRequestButtonActionPerformed
         // TODO add your handling code here:
+        ManageCareTakerRequestJPanel manageCareTakerRequestJPanel = new ManageCareTakerRequestJPanel(userProcessContainer, useraccount);
+        userProcessContainer.add("manageCareTakerRequestJPanel", manageCareTakerRequestJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_ManageRequestButtonActionPerformed
     
     
@@ -121,7 +125,7 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton ManageRequestButton;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton manageEmployeeJButton;
+    private javax.swing.JButton manageCareTakerJButton;
     private javax.swing.JButton manageOrganizationJButton;
     private javax.swing.JButton userJButton;
     private javax.swing.JLabel valueLabel;
