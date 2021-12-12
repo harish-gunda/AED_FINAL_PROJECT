@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.Order;
 import Business.WorkQueue.Product;
+import Business.WorkQueue.SuppliesWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -99,11 +100,12 @@ JPanel userProcessContainer;
             JOptionPane.showMessageDialog(this, "Please select an item");
             return;
         }
-        SuppliesWorkRequest request = (Order)RequestTable.getValueAt(selectedRow, 0);
-            Donate transactionHome= new Donate(userProcessContainer, request);
-            userProcessContainer.add("donate", transactionHome);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+        SuppliesWorkRequest request = (SuppliesWorkRequest)RequestTable.getValueAt(selectedRow, 0);
+        Donate transactionHome= new Donate(userProcessContainer, request);
+        userProcessContainer.add("donate", transactionHome);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -112,9 +114,8 @@ JPanel userProcessContainer;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-public void populateRequestTable() {
+    public void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) RequestTable.getModel();
-        
         model.setRowCount(0);
         for(WorkRequest request:ecoSystem.getWorkQueue().getWorkRequestList()){
             Object[] row = new Object[5];
@@ -122,8 +123,8 @@ public void populateRequestTable() {
             row[1] = ((SuppliesWorkRequest)request).getAmount();
             row[2] = request.getSender();
             row[3] = request.getStatus();
-            
             model.addRow(row);
         }
+    }
 }
     

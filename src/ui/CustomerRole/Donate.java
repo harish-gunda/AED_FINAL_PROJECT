@@ -6,8 +6,10 @@
 package ui.CustomerRole;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.WorkQueue.Order;
+import Business.WorkQueue.SuppliesWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;

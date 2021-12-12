@@ -52,7 +52,7 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         for(WorkRequest request : ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(request.senderEnterprise().equals(enterprise)){
+            if(request.getSenderEnterprise().equals(enterprise)){
                 Object[] row = new Object[4];
                 row[0] = request;
                 row[1] = request.getSender().getEmployee().getName();

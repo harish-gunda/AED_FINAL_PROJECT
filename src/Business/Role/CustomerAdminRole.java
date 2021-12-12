@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.CustomerAdminRole.CustomerAdminWorkAreaJPanel;
 
 /**
  *
@@ -18,6 +19,6 @@ import javax.swing.JPanel;
 public class CustomerAdminRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CustomerAdmin(userProcessContainer, enterprise, business, account);
+        return new CustomerAdminWorkAreaJPanel(userProcessContainer, enterprise);
     }
 }
