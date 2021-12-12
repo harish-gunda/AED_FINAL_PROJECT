@@ -20,7 +20,7 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem ecoSystem;
     UserAccount userAccount;
     /** Creates new form AdminWorkAreaJPanel */
-    public OrphanageAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise,EcoSystem ecoSystem,UserAccount userAccount) {
+    public OrphanageAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise,EcoSystem business,UserAccount account) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
