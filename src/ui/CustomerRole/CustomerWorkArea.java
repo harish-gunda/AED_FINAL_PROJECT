@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import ui.SalesSupervisorRole.BuyProductsFromDistributorJPanel;
@@ -34,6 +35,7 @@ public class CustomerWorkArea extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.enterprise = enterprise;
         populateNetworkCombo();
+        System.out.println("in this");
     }
     
 
@@ -55,7 +57,7 @@ public class CustomerWorkArea extends javax.swing.JPanel {
         btnRequest1 = new javax.swing.JButton();
         cboxDistributor = new javax.swing.JComboBox<>();
         btnRequest = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -65,7 +67,7 @@ public class CustomerWorkArea extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Select a Supermarket");
         add(jLabel2);
-        jLabel2.setBounds(6, 26, 897, 55);
+        jLabel2.setBounds(20, 70, 897, 55);
 
         jLabel3.setText("SuperMarket");
         add(jLabel3);
@@ -106,10 +108,14 @@ public class CustomerWorkArea extends javax.swing.JPanel {
         add(btnRequest);
         btnRequest.setBounds(545, 266, 167, 29);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/Customer.jpeg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 1000, 630);
+        jButton1.setText("<<back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1);
+        jButton1.setBounds(20, 20, 94, 29);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboxNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNetworkActionPerformed
@@ -171,13 +177,24 @@ public class CustomerWorkArea extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnRequestActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CustomerMain dwjp = (CustomerMain) component;
+//        dwjp.populateRequestTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRequest;
     private javax.swing.JButton btnRequest1;
     private javax.swing.JComboBox<String> cboxDistributor;
     private javax.swing.JComboBox<String> cboxNetwork;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -3,8 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/riddhimedakkar/Desktop/AED/AED_FINAL_PROJECT/src/Business/ConfigureASystem.java</file>
-            <file>file:/Users/riddhimedakkar/Desktop/AED/AED_FINAL_PROJECT/src/Business/DB4OUtil/DB4OUtil.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/AdministrativeRole/CustomerAdminWorkArea.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/CustomerRole/CustomerWorkArea.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/CustomerRole/Donate.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/SystemAdminWorkArea/GroceriesAnalyticsReportsJPanel.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/CareTakerRole/RequestSuppliesJPanel.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/SalesSupervisorRole/BuyProductsFromDistributorJPanel.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/SalesSupervisorRole/ManageCustomerRequests.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/SupplierAdminRole/ManageRequests.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/SalesSupervisorRole/ManageProductsJPanel.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/SalesSupervisorRole/ManageSalesEmployeeJPanel.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/DistributorAdminRole/ManageSuperMarketRequests.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/CustomerRole/CustomerMain.java</file>
+            <file>file:/Users/harish/Desktop/aed/AED_FINAL_PROJECT/src/ui/DistributorAdminRole/ManageProduct.java</file>
         </group>
     </open-files>
 </project-private>
