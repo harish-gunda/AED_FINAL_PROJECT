@@ -77,7 +77,7 @@ private JPanel userProcessContainer;
 
         setLayout(null);
 
-        tblProductList.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
+        tblProductList.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         tblProductList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
