@@ -59,6 +59,9 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         cboxNetwork = new javax.swing.JComboBox<>();
         btnRequest1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,6 +76,9 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblRequest);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(281, 51, 454, 176);
+
         tblDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -86,14 +92,21 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblDetails);
 
+        add(jScrollPane2);
+        jScrollPane2.setBounds(281, 416, 454, 160);
+
         btnOrderDetails.setText("Order Details");
         btnOrderDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOrderDetailsActionPerformed(evt);
             }
         });
+        add(btnOrderDetails);
+        btnOrderDetails.setBounds(442, 239, 127, 29);
 
         cboxSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cboxSupplier);
+        cboxSupplier.setBounds(441, 345, 138, 27);
 
         btnRequest.setText("Request");
         btnRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -101,10 +114,18 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
                 btnRequestActionPerformed(evt);
             }
         });
+        add(btnRequest);
+        btnRequest.setBounds(597, 344, 138, 29);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Supplier: ");
+        add(jLabel1);
+        jLabel1.setBounds(291, 349, 138, 16);
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Network");
+        add(jLabel2);
+        jLabel2.setBounds(291, 302, 138, 16);
 
         cboxNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxNetwork.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +133,8 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
                 cboxNetworkActionPerformed(evt);
             }
         });
+        add(cboxNetwork);
+        cboxNetwork.setBounds(441, 298, 138, 27);
 
         btnRequest1.setText("Select Network");
         btnRequest1.addActionListener(new java.awt.event.ActionListener() {
@@ -119,62 +142,13 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
                 btnRequest1ActionPerformed(evt);
             }
         });
+        add(btnRequest1);
+        btnRequest1.setBounds(591, 297, 138, 29);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(43, 43, 43)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(405, 405, 405))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(cboxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(btnRequest1))
-                                            .addComponent(cboxSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRequest)
-                            .addComponent(btnOrderDetails))))
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnOrderDetails)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(btnRequest1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cboxSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRequest))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3);
+        jLabel3.setBounds(0, 0, 1000, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderDetailsActionPerformed
@@ -185,7 +159,6 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
             return;
         }
         Order order = (Order)tblRequest.getValueAt(selectedRow, 0);
-        order.setReceiver(userAccount);
         DefaultTableModel model = (DefaultTableModel) tblDetails.getModel();
         model.setRowCount(0);
         for(Product product:order.getProductList()){
@@ -275,6 +248,7 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboxSupplier;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblDetails;

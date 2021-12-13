@@ -44,12 +44,14 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         ManageRequestButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        add(jLabel1);
+        jLabel1.setBounds(270, 60, 411, 29);
 
         userJButton.setText("Manage User");
         userJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +59,8 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 150, -1));
+        add(userJButton);
+        userJButton.setBounds(420, 350, 150, 29);
 
         manageCareTakerJButton.setText("Manage CareTaker");
         manageCareTakerJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +68,8 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageCareTakerJButtonActionPerformed(evt);
             }
         });
-        add(manageCareTakerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 150, -1));
+        add(manageCareTakerJButton);
+        manageCareTakerJButton.setBounds(420, 300, 150, 29);
 
         manageOrganizationJButton.setText("Manage Orphanage");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,14 +77,17 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
-        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+        add(manageOrganizationJButton);
+        manageOrganizationJButton.setBounds(420, 250, 164, 29);
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 30));
+        add(enterpriseLabel);
+        enterpriseLabel.setBounds(300, 130, 120, 30);
 
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+        add(valueLabel);
+        valueLabel.setBounds(470, 140, 130, 16);
 
         ManageRequestButton.setText("Manage Request");
         ManageRequestButton.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +95,13 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
                 ManageRequestButtonActionPerformed(evt);
             }
         });
-        add(ManageRequestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 150, 30));
+        add(ManageRequestButton);
+        ManageRequestButton.setBounds(420, 400, 150, 30);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/orphanage.jpeg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2);
+        jLabel2.setBounds(0, 0, 1070, 610);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -131,6 +144,7 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton ManageRequestButton;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton manageCareTakerJButton;
     private javax.swing.JButton manageOrganizationJButton;
     private javax.swing.JButton userJButton;

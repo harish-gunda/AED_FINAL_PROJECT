@@ -47,12 +47,14 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         btnBuyProducts = new javax.swing.JButton();
         userJButton1 = new javax.swing.JButton();
         manageEmployeeJButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("My Work Area -Super Market Admin");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        add(jLabel1);
+        jLabel1.setBounds(280, 60, 426, 29);
 
         userJButton.setText("Manage User");
         userJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +62,8 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 150, -1));
+        add(userJButton);
+        userJButton.setBounds(360, 340, 230, 29);
 
         manageEmployeeJButton.setText("Manage Employee");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +71,8 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 150, -1));
+        add(manageEmployeeJButton);
+        manageEmployeeJButton.setBounds(360, 290, 240, 29);
 
         manageOrganizationJButton.setText("Manage Organization");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -76,14 +80,17 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
-        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 180, -1));
+        add(manageOrganizationJButton);
+        manageOrganizationJButton.setBounds(360, 240, 240, 29);
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 30));
+        add(enterpriseLabel);
+        enterpriseLabel.setBounds(290, 110, 120, 30);
 
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+        add(valueLabel);
+        valueLabel.setBounds(440, 120, 130, 16);
 
         btnManageProducts.setText("Manage product prices");
         btnManageProducts.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +98,8 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageProductsActionPerformed(evt);
             }
         });
-        add(btnManageProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, -1));
+        add(btnManageProducts);
+        btnManageProducts.setBounds(357, 440, 230, 29);
 
         btnBuyProducts.setText("Buy Products from Distributor");
         btnBuyProducts.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +107,8 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 btnBuyProductsActionPerformed(evt);
             }
         });
-        add(btnBuyProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
+        add(btnBuyProducts);
+        btnBuyProducts.setBounds(360, 390, 232, 29);
 
         userJButton1.setText("Raise Delivery request");
         userJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +116,8 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 userJButton1ActionPerformed(evt);
             }
         });
-        add(userJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 170, -1));
+        add(userJButton1);
+        userJButton1.setBounds(360, 540, 230, 29);
 
         manageEmployeeJButton1.setText("Manage Requests");
         manageEmployeeJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +125,13 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 manageEmployeeJButton1ActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 150, -1));
+        add(manageEmployeeJButton1);
+        manageEmployeeJButton1.setBounds(360, 490, 230, 29);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2);
+        jLabel2.setBounds(0, 0, 960, 610);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -185,6 +201,7 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageProducts;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageEmployeeJButton1;
     private javax.swing.JButton manageOrganizationJButton;

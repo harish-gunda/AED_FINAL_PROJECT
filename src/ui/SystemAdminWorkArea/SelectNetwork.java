@@ -37,8 +37,13 @@ public class SelectNetwork extends javax.swing.JPanel {
 
         cboxNetwork = new javax.swing.JComboBox<>();
         btnSelectNetwork = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         cboxNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cboxNetwork);
+        cboxNetwork.setBounds(95, 86, 96, 27);
 
         btnSelectNetwork.setText("Select Network");
         btnSelectNetwork.addActionListener(new java.awt.event.ActionListener() {
@@ -46,27 +51,13 @@ public class SelectNetwork extends javax.swing.JPanel {
                 btnSelectNetworkActionPerformed(evt);
             }
         });
+        add(btnSelectNetwork);
+        btnSelectNetwork.setBounds(228, 85, 138, 29);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(cboxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btnSelectNetwork)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboxNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSelectNetwork))
-                .addContainerGap(186, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/what-system-administrator-do.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 900, 680);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSelectNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectNetworkActionPerformed
@@ -85,6 +76,7 @@ public class SelectNetwork extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSelectNetwork;
     private javax.swing.JComboBox<String> cboxNetwork;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
     private void populateCombo() {
