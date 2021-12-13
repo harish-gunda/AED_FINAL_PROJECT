@@ -5,7 +5,7 @@
 package ui.OrphanageAdminRole;
 
 import Business.EcoSystem;
-import ui.AdministrativeRole.*;
+
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -206,7 +206,7 @@ public class ManageOrphanageUserAccountJPanel extends javax.swing.JPanel {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/orphanage.jpeg"))); // NOI18N
         jLabel6.setText("jLabel6");
         add(jLabel6);
-        jLabel6.setBounds(0, 0, 1070, 610);
+        jLabel6.setBounds(0, 0, 1110, 610);
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed

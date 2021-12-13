@@ -60,13 +60,13 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Sender", "Receiver", "SenderEnterprise", "Receiver Enterprise", "Status"
+                "Sender", "Receiver", "SenderEnterprise", "Receiver Enterprise", "Sender Network", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -100,13 +100,13 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Product", "Description", "Distributor Price", "Quantity"
+                "Product", "Description", "Price", "Quantity"
             }
         ));
         jScrollPane2.setViewportView(tblDetails);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(282, 401, 454, 160);
+        jScrollPane2.setBounds(280, 340, 454, 160);
 
         btnOrderDetails.setText("Order Details");
         btnOrderDetails.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +129,7 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(10, 10, 770, 570);
+        jLabel2.setBounds(10, -10, 1070, 620);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
@@ -191,7 +191,7 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
             Object[] row = new Object[4];
             row[0] = product;
             row[1] = product.getDescription();
-            row[2] = product.getDistributorPrice();
+            row[2] = product.getSuperMarketPrice();
             row[3] = product.getQuantity();
             model.addRow(row);
         }
@@ -222,12 +222,13 @@ public class ManageCustomerRequests extends javax.swing.JPanel {
         model.setRowCount(0);
         for(WorkRequest workRequest:ecoSystem.getWorkQueue().getWorkRequestList()){
             if(workRequest.getReceiverEnterprise()!=null && workRequest.getReceiverEnterprise().getName().equals(enterprise.getName())){
-                Object[] row = new Object[5];
+                Object[] row = new Object[6];
                 row[0] = workRequest;
                 row[1] = workRequest.getReceiver();
                 row[2] = workRequest.getSenderEnterprise();
                 row[3] = workRequest.getReceiverEnterprise();
-                row[4] = workRequest.getStatus();
+                row[4] = workRequest.getNetworkName();
+                row[5] = workRequest.getStatus();
                 model.addRow(row);
             }
         }

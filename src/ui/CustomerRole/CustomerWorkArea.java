@@ -58,6 +58,7 @@ public class CustomerWorkArea extends javax.swing.JPanel {
         cboxDistributor = new javax.swing.JComboBox<>();
         btnRequest = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -116,6 +117,10 @@ public class CustomerWorkArea extends javax.swing.JPanel {
         });
         add(jButton1);
         jButton1.setBounds(20, 20, 94, 29);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/Customer.jpeg"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(10, 10, 1030, 620);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboxNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNetworkActionPerformed
@@ -195,6 +200,7 @@ public class CustomerWorkArea extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboxDistributor;
     private javax.swing.JComboBox<String> cboxNetwork;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

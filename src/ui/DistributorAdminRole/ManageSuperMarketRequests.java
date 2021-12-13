@@ -140,7 +140,7 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/distributor.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1);
-        jLabel1.setBounds(0, 0, 1010, 590);
+        jLabel1.setBounds(0, 0, 1030, 590);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
@@ -182,6 +182,7 @@ public class ManageSuperMarketRequests extends javax.swing.JPanel {
         order.setReceiver(userAccount);
         if(!order.getStatus().contains("Accepted")){
             order.setStatus("Rejected by Distributor");
+            enterprise.restoreProducts(order);
             JOptionPane.showMessageDialog(this, "This order has been rejected");
         }else{
             JOptionPane.showMessageDialog(this, "This order was accepted earlier");

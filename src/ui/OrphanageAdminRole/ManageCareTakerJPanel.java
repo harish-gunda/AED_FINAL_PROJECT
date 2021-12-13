@@ -4,7 +4,7 @@
  */
 package ui.OrphanageAdminRole;
 
-import ui.AdministrativeRole.*;
+
 import Business.Employee.Employee;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
@@ -167,7 +167,7 @@ public class ManageCareTakerJPanel extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/orphanage.jpeg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(0, 0, 970, 530);
+        jLabel4.setBounds(0, 0, 1160, 630);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed

@@ -90,7 +90,10 @@ public class ProcessLightRequests extends javax.swing.JPanel {
                     }
                 }
                 if(check){
-                    order.getSenderEnterprise().getProductList().add(product);
+                    Product prod = new Product(product.getName(),product.getDescription());
+                    prod.setSuperMarketPrice(product.getSuperMarketPrice());
+                    prod.setQuantity(product.getQuantity());
+                    order.getSenderEnterprise().getProductList().add(prod);
                 }
             }
         }

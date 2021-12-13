@@ -5,7 +5,7 @@
 package ui.SupplierAdminRole;
 
 import Business.EcoSystem;
-import ui.AdministrativeRole.*;
+
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;

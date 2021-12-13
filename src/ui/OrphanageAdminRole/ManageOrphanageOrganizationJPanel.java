@@ -4,7 +4,6 @@
  */
 package ui.OrphanageAdminRole;
 
-import ui.AdministrativeRole.*;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -36,7 +35,7 @@ public class ManageOrphanageOrganizationJPanel extends javax.swing.JPanel {
     private void populateCombo(){
         organizationJComboBox.removeAllItems();
         for (Type type : Organization.Type.values()){
-            if (!type.getValue().equals(Type.Admin.getValue()))
+            if (type.getValue().equals(Type.CareTaker.getValue()))
                 organizationJComboBox.addItem(type);
         }
     }
@@ -137,7 +136,7 @@ public class ManageOrphanageOrganizationJPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/orphanage.jpeg"))); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(0, 0, 1010, 600);
+        jLabel2.setBounds(0, 0, 1150, 640);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed

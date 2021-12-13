@@ -7,6 +7,7 @@ package Business.Enterprise;
 
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.WorkQueue.Order;
 import Business.WorkQueue.Product;
 import java.util.ArrayList;
 
@@ -25,12 +26,10 @@ public abstract class Enterprise extends Organization{
     }
     
     public enum EnterpriseType{
-        Hospital("Hospital"),
         SuperMarket("SuperMarket"),
         Distributor("Distributor"),
         Supplier("Supplier"),
         Customer("Customer"),
-        
         Orphanage("Orphanage");
         
         private String value;
@@ -70,5 +69,15 @@ public abstract class Enterprise extends Organization{
         this.enterpriseType=type;
         organizationDirectory=new OrganizationDirectory();
         productList = new ArrayList<Product>();
+    }
+    
+    public void restoreProducts(Order order){
+        for(Product prod:order.getProductList()){
+            for(Product product:this.getProductList()){
+                if(product.getName().equals(prod.getName())){
+                    product.setQuantity(product.getQuantity()+prod.getQuantity());
+                }
+            }
+        }
     }
 }

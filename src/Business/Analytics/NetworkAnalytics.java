@@ -53,7 +53,7 @@ public class NetworkAnalytics {
         }
         
         public HashMap<String,Integer> getFundsRaised(String networkSelected){
-            String temporary="";
+            String temporary=networkSelected;
             HashMap<String,Integer> ent = null;
             for(Network network:system.getNetworkList()){
                 ent = new HashMap<String,Integer>();

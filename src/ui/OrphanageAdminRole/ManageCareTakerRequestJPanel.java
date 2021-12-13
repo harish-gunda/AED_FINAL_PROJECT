@@ -6,7 +6,7 @@
 package ui.OrphanageAdminRole;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import ui.AdministrativeRole.*;
+
 import Business.Organization.OrphanageAdminOrganization;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
@@ -15,6 +15,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SuppliesWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
@@ -78,6 +79,8 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
         AssignTomeButton = new javax.swing.JButton();
         ProcessManagerButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -130,7 +133,7 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
             }
         });
         add(ProcessManagerButton);
-        ProcessManagerButton.setBounds(751, 510, 121, 29);
+        ProcessManagerButton.setBounds(750, 510, 121, 29);
 
         jButton3.setText("Refresh");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -141,10 +144,29 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
         add(jButton3);
         jButton3.setBounds(751, 465, 121, 29);
 
+        backButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        backButton.setText("<<Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        add(backButton);
+        backButton.setBounds(50, 50, 103, 30);
+
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+        add(btnReject);
+        btnReject.setBounds(750, 550, 121, 29);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/orphanage.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1);
-        jLabel1.setBounds(0, 0, 980, 630);
+        jLabel1.setBounds(20, 10, 1140, 640);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -190,10 +212,37 @@ public class ManageCareTakerRequestJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);        // TODO add your handling code here:
     }//GEN-LAST:event_ProcessManagerButtonActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        OrphanageAdminWorkAreaJPanel oawj = (OrphanageAdminWorkAreaJPanel) component;
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = workRequestJTable.getSelectedRow();
+        if (selectedRow < 0){
+            return;
+        }
+
+        SuppliesWorkRequest request = (SuppliesWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        if(request.getStatus().equals("Completed")||request.getStatus().equals("Rejected")){
+            JOptionPane.showMessageDialog(null, "Already Completed");
+            return;
+        }
+        request.setStatus("Rejected");
+    }//GEN-LAST:event_btnRejectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AssignTomeButton;
     private javax.swing.JButton ProcessManagerButton;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton btnReject;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -9,9 +9,6 @@ import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import ui.AdministrativeRole.ManageCustomer;
-import ui.AdministrativeRole.ManageUserAccount;
-import ui.SalesSupervisorRole.PreviousOrdersDA;
 
 /**
  *
@@ -31,6 +28,7 @@ public class DistributorAdmWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.ecoSystem = ecoSystem;
         initComponents();
+        valueLabel.setText(enterprise.getName());
     }
 
     /**
@@ -48,7 +46,6 @@ public class DistributorAdmWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         btnBuyProducts = new javax.swing.JButton();
-        btnPrevious = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -65,7 +62,7 @@ public class DistributorAdmWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(userJButton);
-        userJButton.setBounds(430, 330, 180, 29);
+        userJButton.setBounds(420, 330, 180, 29);
 
         manageEmployeeJButton.setText("Manage Requests");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -92,16 +89,7 @@ public class DistributorAdmWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnBuyProducts);
-        btnBuyProducts.setBounds(420, 390, 180, 29);
-
-        btnPrevious.setText("Previous Orders");
-        btnPrevious.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPreviousActionPerformed(evt);
-            }
-        });
-        add(btnPrevious);
-        btnPrevious.setBounds(420, 460, 180, 29);
+        btnBuyProducts.setBounds(420, 380, 180, 29);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/distributor.jpeg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -137,18 +125,9 @@ public class DistributorAdmWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBuyProductsActionPerformed
 
-    private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
-        // TODO add your handling code here:
-        PreviousOrdersDA customerMain = new PreviousOrdersDA(userProcessContainer, enterprise, userAccount, ecoSystem);
-        userProcessContainer.add("donation", customerMain);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnPreviousActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuyProducts;
-    private javax.swing.JButton btnPrevious;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

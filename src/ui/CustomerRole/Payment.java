@@ -9,9 +9,11 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.WorkQueue.Order;
+import Business.WorkQueue.Product;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.util.regex.Matcher;
@@ -39,6 +41,7 @@ public class Payment extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         this.order = order;
         lblTotal.setText(String.valueOf(order.totalSuperMarket()));
+        System.out.println("inside payment");
     }
 
     /**
@@ -109,7 +112,7 @@ public class Payment extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/payment.jpeg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(0, 0, 820, 410);
+        jLabel4.setBounds(0, 0, 1070, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -118,14 +121,28 @@ public class Payment extends javax.swing.JPanel {
 
     private void btnCompletePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletePaymentActionPerformed
         // TODO add your handling code here:
+        if(order.getProductList().size()==0){
+            JOptionPane.showMessageDialog(this, "Please add items to the cart");
+            return;
+        }
         if(txtCard.getText().isEmpty() || txtName.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "All fields are mandatory");
             return;
         }
         if(checkCardValid(txtCard.getText())){
             Employee customer = new Employee(txtName.getText(), txtCard.getText());
-            ecoSystem.getWorkQueue().getWorkRequestList().add(order);
-            JOptionPane.showMessageDialog(this, "Thankyou for your for shopping with us");
+            Order newOrder = new Order();
+            newOrder.setSender(order.getSender());
+            newOrder.setNetworkName(order.getNetworkName());
+            newOrder.setSenderEnterprise(order.getSenderEnterprise());
+            newOrder.setReceiverEnterprise(order.getReceiverEnterprise());
+            newOrder.setStatus("waiting for supermarket to accept");
+            for(Product prod:order.getProductList()){
+                newOrder.getProductList().add(prod);
+            }
+            ecoSystem.getWorkQueue().getWorkRequestList().add(newOrder);
+            order.getProductList().clear();
+            JOptionPane.showMessageDialog(this, "Thankyou for shopping with us");
             workRequest.setStatus("waiting for supermarket admin to accept");
             System.out.println("order placed");
         }else{
@@ -141,6 +158,7 @@ public class Payment extends javax.swing.JPanel {
         Component component = componentArray[componentArray.length - 1];
         ProductList dwjp = (ProductList) component;
         dwjp.populateProductList();
+        dwjp.populateOrder();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed

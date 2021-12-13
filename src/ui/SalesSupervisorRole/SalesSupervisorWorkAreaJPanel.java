@@ -3,7 +3,6 @@
 package ui.SalesSupervisorRole;
 
 import Business.EcoSystem;
-import ui.AdministrativeRole.*;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -47,6 +46,7 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         btnBuyProducts = new javax.swing.JButton();
         userJButton1 = new javax.swing.JButton();
         manageEmployeeJButton1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -128,10 +128,19 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         add(manageEmployeeJButton1);
         manageEmployeeJButton1.setBounds(360, 490, 230, 29);
 
+        jButton1.setText("My Requests");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1);
+        jButton1.setBounds(360, 580, 230, 29);
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(0, 0, 960, 610);
+        jLabel2.setBounds(10, 10, 1180, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -145,7 +154,7 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        ManageCustomer manageEmployeeJPanel = new ManageCustomer(userProcessContainer, enterprise.getOrganizationDirectory());
+        ManageSalesEmployeeJPanel manageEmployeeJPanel = new ManageSalesEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -194,12 +203,22 @@ public class SalesSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageEmployeeJButton1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        PreviousOrdersSMA muajp = new PreviousOrdersSMA(userProcessContainer, enterprise, userAccount,ecoSystem);
+        userProcessContainer.add("ManageUserAccountJPanel", muajp);
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuyProducts;
     private javax.swing.JButton btnManageProducts;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton manageEmployeeJButton;

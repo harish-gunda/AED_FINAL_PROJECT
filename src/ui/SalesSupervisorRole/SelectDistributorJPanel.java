@@ -111,7 +111,7 @@ public class SelectDistributorJPanel extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(0, 20, 1010, 630);
+        jLabel4.setBounds(0, 20, 1210, 630);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboxNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNetworkActionPerformed

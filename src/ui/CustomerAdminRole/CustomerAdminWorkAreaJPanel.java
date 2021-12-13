@@ -44,9 +44,9 @@ public class CustomerAdminWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("My Work Area -Adminstrative Role");
+        jLabel1.setText("My Work Area -Customer Admin Role");
         add(jLabel1);
-        jLabel1.setBounds(270, 40, 411, 29);
+        jLabel1.setBounds(270, 40, 442, 29);
 
         userJButton.setText("Manage User");
         userJButton.addActionListener(new java.awt.event.ActionListener() {

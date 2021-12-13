@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author harish
  */
-public class PreviousOrdersDA extends javax.swing.JPanel {
+public class PreviousOrdersSMA extends javax.swing.JPanel {
     JPanel userProcessConatiner;
     Enterprise enterprise;
     UserAccount userAccount;
@@ -27,12 +27,13 @@ public class PreviousOrdersDA extends javax.swing.JPanel {
     /**
      * Creates new form PreviousOrders
      */
-    public PreviousOrdersDA(JPanel userProcessConatiner, Enterprise enterprise,UserAccount userAccount, EcoSystem ecoSystem) {
+    public PreviousOrdersSMA(JPanel userProcessConatiner, Enterprise enterprise,UserAccount userAccount, EcoSystem ecoSystem) {
         initComponents();
         this.userProcessConatiner = userProcessConatiner;
         this.enterprise = enterprise;
         this.userAccount = userAccount;
         this.ecoSystem = ecoSystem;
+        populateRequests();
     }
 
     /**
@@ -97,7 +98,7 @@ public class PreviousOrdersDA extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1);
-        jLabel1.setBounds(0, 0, 990, 620);
+        jLabel1.setBounds(0, -10, 1030, 620);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderDetailsActionPerformed

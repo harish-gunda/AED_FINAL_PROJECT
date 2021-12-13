@@ -109,7 +109,7 @@ public class SuperMarketAdminDetails extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/payment.jpeg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(0, 0, 860, 440);
+        jLabel4.setBounds(0, 10, 1140, 630);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -118,16 +118,38 @@ public class SuperMarketAdminDetails extends javax.swing.JPanel {
 
     private void btnCompletePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletePaymentActionPerformed
         // TODO add your handling code here:
+        if(order.getProductList().size()==0){
+            JOptionPane.showMessageDialog(this, "Please add items to the cart");
+            return;
+        }
         if(txtCard.getText().isEmpty() || txtName.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "All fields are mandatory");
             return;
         }
         if(checkCardValid(txtCard.getText())){
             Employee customer = new Employee(txtName.getText(), txtCard.getText());
-            ecoSystem.getWorkQueue().getWorkRequestList().add(order);
-            JOptionPane.showMessageDialog(this, "Thankyou for your for shopping with us");
+            Order newOrder = new Order();
+            newOrder.setNetworkName(order.getNetworkName());
+            newOrder.setSender(order.getSender());
+            newOrder.setSenderEnterprise(order.getSenderEnterprise());
+            newOrder.setReceiverEnterprise(order.getReceiverEnterprise());
+            newOrder.setStatus("waiting for distributor to accept");
+            for(Product prod:order.getProductList()){
+                newOrder.getProductList().add(prod);
+            }
+            System.out.println("priting order product list");
+            System.out.println(order.getProductList());
+            System.out.println("priting new order product list");
+            System.out.println(newOrder.getProductList());
+            ecoSystem.getWorkQueue().getWorkRequestList().add(newOrder);
+            JOptionPane.showMessageDialog(this, "Thankyou for shopping with us");
             order.setStatus("waiting for distributor admin to accept");
             System.out.println("order placed");
+            order.getProductList().clear();
+            System.out.println("priting order product list");
+            System.out.println(order.getProductList());
+            System.out.println("priting new order product list");
+            System.out.println(newOrder.getProductList());
         }else{
             JOptionPane.showMessageDialog(this, "Please enter valid card number");
         }

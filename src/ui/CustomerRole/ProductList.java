@@ -8,6 +8,7 @@ package ui.CustomerRole;
 import Business.EcoSystem;
 import Business.Enterprise.CustomerEnterprise;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.Order;
 import Business.WorkQueue.Product;
@@ -44,11 +45,19 @@ private JPanel userProcessContainer;
         this.userAccount = account;
         this.ecoSystem = ecoSystem;
         order = new Order();
+        for(Network network:ecoSystem.getNetworkList()){
+            for(Enterprise ent:network.getEnterpriseDirectory().getEnterpriseList()){
+                if(ent.equals(customerEnterprise)){
+                    order.setNetworkName(network.getName());
+                }
+            }
+        }
         order.setSender(account);
         order.setSenderEnterprise(customerEnterprise);
         order.setReceiverEnterprise(superMarketenterprise);
         order.setStatus("waiting for supermarket to accept");
         populateProductList();
+        System.out.println("init product list");
     }
 
         
@@ -173,19 +182,25 @@ private JPanel userProcessContainer;
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         // TODO add your handling code here:
+        System.out.println(order.getProductList());
         int selectedRow = tblOrderProductList.getSelectedRow();
         if (selectedRow < 0){
             JOptionPane.showMessageDialog(this, "Please select an item");
             return;
         }
         boolean check = true;
-        order.getProductList().remove((Product)tblOrderProductList.getValueAt(selectedRow, 0));
-        for(Product product:customerEnterprise.getProductList()){
-            if(product.getName()== ((Product)tblProductList.getValueAt(selectedRow, 0)).getName()){
-                product.addQuantity();
+        System.out.println(customerEnterprise);
+        
+        for(Product product:superMarketEnterprise.getProductList()){
+            System.out.println(product.getName() + "   " +((Product)tblProductList.getValueAt(selectedRow, 0)).getName());
+            if(product.getName().equals(((Product)tblOrderProductList.getValueAt(selectedRow, 0)).getName())){
+                
+                System.out.println(product.getQuantity()+((Product)tblOrderProductList.getValueAt(selectedRow, 0)).getQuantity());
+                product.setQuantity(product.getQuantity()+((Product)tblOrderProductList.getValueAt(selectedRow, 0)).getQuantity());
                 check = false;
             }
         }
+        order.getProductList().remove((Product)tblOrderProductList.getValueAt(selectedRow, 0));
         populateOrder();
         populateProductList();
     }//GEN-LAST:event_btnRemoveActionPerformed
@@ -210,7 +225,7 @@ private JPanel userProcessContainer;
         }
         if(check){
             Product product = new Product(((Product)tblProductList.getValueAt(selectedRow, 0)).getName(),((Product)tblProductList.getValueAt(selectedRow, 0)).getDescription());
-            product.setDistributorPrice(((Product)tblProductList.getValueAt(selectedRow, 0)).getDistributorPrice());
+            //product.setDistributorPrice(((Product)tblProductList.getValueAt(selectedRow, 0)).getDistributorPrice());
             product.setSuperMarketPrice(((Product)tblProductList.getValueAt(selectedRow, 0)).getSuperMarketPrice());
             order.getProductList().add(product);
         }
@@ -221,6 +236,16 @@ private JPanel userProcessContainer;
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        Order newOrder = new Order();
+        newOrder.setSender(order.getSender());
+        newOrder.setNetworkName(order.getNetworkName());
+        newOrder.setSenderEnterprise(order.getSenderEnterprise());
+        newOrder.setReceiverEnterprise(order.getReceiverEnterprise());
+        newOrder.setStatus("waiting for supermarket to accept");
+        superMarketEnterprise.restoreProducts(newOrder);
+        for(Product prod:order.getProductList()){
+            newOrder.getProductList().add(prod);
+        }
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -236,12 +261,15 @@ private JPanel userProcessContainer;
             userProcessContainer.add("processWorkRequestJPanel", transactionHome);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
+        }else{
+            JOptionPane.showMessageDialog(this, "please add items to the cart");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         populateProductList();
+        populateOrder();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
 
@@ -263,7 +291,7 @@ public void populateProductList() {
         DefaultTableModel model = (DefaultTableModel) tblProductList.getModel();
         
         model.setRowCount(0);
-        System.out.println(superMarketEnterprise);
+        System.out.println("inside product pop");
         if(superMarketEnterprise.getProductList()==null){
             JOptionPane.showMessageDialog(this, "Item not available");
             return;
@@ -273,7 +301,7 @@ public void populateProductList() {
             row[0] = product;
             row[1] = product.getName();
             row[2] = product.getDescription();
-            row[3] = product.getDistributorPrice();
+            row[3] = product.getSuperMarketPrice();
             row[4] = product.getQuantity();
             model.addRow(row);
         }

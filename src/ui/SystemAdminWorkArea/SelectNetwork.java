@@ -37,7 +37,8 @@ public class SelectNetwork extends javax.swing.JPanel {
 
         cboxNetwork = new javax.swing.JComboBox<>();
         btnSelectNetwork = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -54,10 +55,19 @@ public class SelectNetwork extends javax.swing.JPanel {
         add(btnSelectNetwork);
         btnSelectNetwork.setBounds(228, 85, 138, 29);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/what-system-administrator-do.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 900, 680);
+        jButton1.setText("<<Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1);
+        jButton1.setBounds(10, 30, 93, 29);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/what-system-administrator-do.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2);
+        jLabel2.setBounds(10, 0, 970, 550);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSelectNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectNetworkActionPerformed
@@ -72,11 +82,19 @@ public class SelectNetwork extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSelectNetworkActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSelectNetwork;
     private javax.swing.JComboBox<String> cboxNetwork;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
     private void populateCombo() {

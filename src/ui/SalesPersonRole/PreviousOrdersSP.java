@@ -12,6 +12,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.Order;
 import Business.WorkQueue.Product;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -34,6 +35,7 @@ public class PreviousOrdersSP extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = userAccount;
         this.ecoSystem = ecoSystem;
+        populateRequests();
     }
 
     /**
@@ -50,19 +52,20 @@ public class PreviousOrdersSP extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDetails = new javax.swing.JTable();
         btnOrderDetails = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(null);
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Sender", "Receiver", "SenderEnterprise", "Receiver Enterprise", "Status"
+                "Sender", "Sender Enterprise", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -78,7 +81,7 @@ public class PreviousOrdersSP extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Product", "Description", "Distributor Price", "Quantity"
+                "Product", "Description", "Price", "Quantity"
             }
         ));
         jScrollPane2.setViewportView(tblDetails);
@@ -95,10 +98,19 @@ public class PreviousOrdersSP extends javax.swing.JPanel {
         add(btnOrderDetails);
         btnOrderDetails.setBounds(470, 304, 127, 29);
 
+        jButton1.setText("<<Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1);
+        jButton1.setBounds(20, 20, 93, 29);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1);
-        jLabel1.setBounds(0, 0, 1030, 620);
+        jLabel1.setBounds(10, 0, 1230, 590);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderDetailsActionPerformed
@@ -116,15 +128,23 @@ public class PreviousOrdersSP extends javax.swing.JPanel {
             Object[] row = new Object[4];
             row[0] = product;
             row[1] = product.getDescription();
-            row[2] = product.getDistributorPrice();
+            row[2] = product.getSuperMarketPrice();
             row[3] = product.getQuantity();
             model.addRow(row);
         }
     }//GEN-LAST:event_btnOrderDetailsActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        userProcessConatiner.remove(this);
+        CardLayout layout = (CardLayout) userProcessConatiner.getLayout();
+        layout.previous(userProcessConatiner);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrderDetails;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -136,12 +156,12 @@ public class PreviousOrdersSP extends javax.swing.JPanel {
         model.setRowCount(0);
         for(WorkRequest workRequest:ecoSystem.getWorkQueue().getWorkRequestList()){
             if(workRequest.getSender()!=null && workRequest.getSender().equals(userAccount)){
-                Object[] row = new Object[5];
+                Object[] row = new Object[3];
                 row[0] = workRequest;
-                row[1] = workRequest.getReceiver();
-                row[2] = workRequest.getSenderEnterprise();
-                row[3] = workRequest.getReceiverEnterprise();
-                row[4] = workRequest.getStatus();
+                
+                row[1] = workRequest.getSenderEnterprise();
+                
+                row[2] = workRequest.getStatus();
                 model.addRow(row);
             }
         }

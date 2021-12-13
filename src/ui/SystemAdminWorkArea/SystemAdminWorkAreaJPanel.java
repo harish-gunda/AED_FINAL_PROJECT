@@ -64,10 +64,15 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 networkNode.insert(enterpriseNode, j);
                 
                 organizationList=enterprise.getOrganizationDirectory().getOrganizationList();
+                System.out.println(organizationList.size());
                 for(int k=0;k<organizationList.size();k++){
-                    organization=organizationList.get(i);
+                    System.out.println(enterprise);
+                    System.out.println(organizationList);
+                    
+                    organization=organizationList.get(k);
                     organizationNode=new DefaultMutableTreeNode(organization.getName());
                     enterpriseNode.insert(organizationNode, k);
+                    System.out.println(k);
                 }
             }
         }
@@ -92,7 +97,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageNetwork = new javax.swing.JButton();
         btnManageEnterprise = new javax.swing.JButton();
         btnManageAdmin = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -155,10 +159,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2.add(btnManageAdmin);
         btnManageAdmin.setBounds(91, 189, 204, 29);
 
-        jButton1.setText("Manage Distributor Requests");
-        jPanel2.add(jButton1);
-        jButton1.setBounds(91, 236, 204, 29);
-
         jButton2.setText("Analytics");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +166,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jButton2);
-        jButton2.setBounds(91, 283, 204, 29);
+        jButton2.setBounds(90, 230, 204, 29);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/what-system-administrator-do.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -220,7 +220,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageAdmin;
     private javax.swing.JButton btnManageEnterprise;
     private javax.swing.JButton btnManageNetwork;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

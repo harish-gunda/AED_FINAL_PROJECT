@@ -82,14 +82,14 @@ public class RequestSuppliesJPanel extends javax.swing.JPanel {
         jLabel1.setBounds(303, 220, 135, 26);
 
         requestTestJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        requestTestJButton.setText("Request Supplies");
+        requestTestJButton.setText("Request Donation");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
         add(requestTestJButton);
-        requestTestJButton.setBounds(498, 324, 149, 29);
+        requestTestJButton.setBounds(498, 324, 154, 29);
 
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backJButton.setText("<<Back");

@@ -109,7 +109,7 @@ public class ManageRequests extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Product", "Description", "Distributor Price", "Quantity"
+                "Product", "Description", "Price", "Quantity"
             }
         ));
         jScrollPane2.setViewportView(tblDetails);
@@ -181,7 +181,7 @@ public class ManageRequests extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supplier.jpeg"))); // NOI18N
         jLabel3.setText("jLabel3");
         add(jLabel3);
-        jLabel3.setBounds(20, 10, 940, 560);
+        jLabel3.setBounds(20, 10, 1010, 590);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
@@ -222,6 +222,9 @@ public class ManageRequests extends javax.swing.JPanel {
         order.setSupplierAdmin(userAccount);
         if(!order.getStatus().contains("Accepted")){
             order.setStatus("Rejected by Supplier");
+            
+            
+            order.getReceiverEnterprise().restoreProducts(order);
             JOptionPane.showMessageDialog(this, "This order has been rejected");
         }else{
             JOptionPane.showMessageDialog(this, "This order was accepted earlier");
@@ -242,7 +245,12 @@ public class ManageRequests extends javax.swing.JPanel {
             Object[] row = new Object[4];
             row[0] = product;
             row[1] = product.getDescription();
-            row[2] = product.getDistributorPrice();
+            if(order.getReceiverEnterprise().getEnterpriseType().getValue().equals(Enterprise.EnterpriseType.Distributor.getValue())){
+                row[2] = product.getDistributorPrice();
+            }else{
+                row[2] = product.getSuperMarketPrice();
+            }
+            
             row[3] = product.getQuantity();
             model.addRow(row);
         }

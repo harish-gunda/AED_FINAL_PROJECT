@@ -4,7 +4,7 @@
  */
 package ui.SalesSupervisorRole;
 
-import ui.AdministrativeRole.*;
+
 import Business.Employee.Employee;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
@@ -167,7 +167,7 @@ public class ManageSalesEmployeeJPanel extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(0, 0, 1000, 570);
+        jLabel4.setBounds(20, 0, 1170, 570);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed

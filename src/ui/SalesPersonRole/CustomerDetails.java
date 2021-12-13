@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.WorkQueue.Order;
+import Business.WorkQueue.Product;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -91,7 +92,7 @@ public class CustomerDetails extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/payment.jpeg"))); // NOI18N
         jLabel3.setText("jLabel3");
         add(jLabel3);
-        jLabel3.setBounds(0, -10, 920, 480);
+        jLabel3.setBounds(0, -10, 1140, 660);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -100,12 +101,24 @@ public class CustomerDetails extends javax.swing.JPanel {
 
     private void btnCompletePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletePaymentActionPerformed
         // TODO add your handling code here:
+        if(order.getProductList().size()==0){
+            JOptionPane.showMessageDialog(this, "Please add items to the cart");
+            return;
+        }
         if(txtCard.getText().isEmpty() || txtName.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "All fields are mandatory");
             return;
         }
         Employee customer = new Employee(txtName.getText(), txtCard.getText());
-        ecoSystem.getWorkQueue().getWorkRequestList().add(order);
+        Order newOrder = new Order();
+        newOrder.setSender(order.getSender());
+        newOrder.setSenderEnterprise(order.getSenderEnterprise());
+        for(Product prod:order.getProductList()){
+            newOrder.getProductList().add(prod);
+        }
+        newOrder.setStatus("completed");
+        ecoSystem.getWorkQueue().getWorkRequestList().add(newOrder);
+        order.getProductList().clear();
         JOptionPane.showMessageDialog(this, "Transaction complete");
     }//GEN-LAST:event_btnCompletePaymentActionPerformed
 

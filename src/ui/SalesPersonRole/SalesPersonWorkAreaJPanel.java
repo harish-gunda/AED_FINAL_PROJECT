@@ -33,6 +33,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
         this.salesPersonOrganization = (SalesPersonOrganisation)organization;
         
         this.enterprise = enterprise;
+        valueLabel.setText(enterprise.getName());
     }
 
     /**
@@ -47,6 +48,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        valueLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -73,10 +75,14 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
         add(jButton2);
         jButton2.setBounds(261, 282, 165, 29);
 
+        valueLabel.setText("jLabel3");
+        add(valueLabel);
+        valueLabel.setBounds(440, 20, 150, 16);
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(0, 0, 710, 510);
+        jLabel2.setBounds(20, 10, 1220, 570);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -103,5 +109,6 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

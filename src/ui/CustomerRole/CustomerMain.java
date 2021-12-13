@@ -45,6 +45,7 @@ public class CustomerMain extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btnPrevious = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -79,10 +80,16 @@ public class CustomerMain extends javax.swing.JPanel {
         add(btnPrevious);
         btnPrevious.setBounds(410, 280, 250, 70);
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Customer Work Area");
+        add(jLabel1);
+        jLabel1.setBounds(390, 20, 290, 30);
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/Customer.jpeg"))); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(0, 0, 1000, 640);
+        jLabel2.setBounds(30, -10, 1050, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -114,6 +121,7 @@ public class CustomerMain extends javax.swing.JPanel {
     private javax.swing.JButton btnPrevious;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

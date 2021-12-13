@@ -5,7 +5,6 @@
 package ui.SalesSupervisorRole;
 
 import Business.Enterprise.Enterprise;
-import ui.AdministrativeRole.*;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -142,7 +141,7 @@ public class ManageSuperMarketOrganizationJPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(0, 0, 1010, 600);
+        jLabel2.setBounds(0, -20, 1040, 620);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed

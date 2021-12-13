@@ -41,6 +41,8 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         order = new Order();
         order.setSender(account);
+        order.setSenderEnterprise(enterprise);
+        order.setStatus("pending");
         populateProductList();
     }
 
@@ -65,6 +67,7 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         btnAdd = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -158,10 +161,18 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         add(jButton1);
         jButton1.setBounds(388, 607, 130, 29);
 
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        add(btnRefresh);
+        btnRefresh.setBounds(730, 20, 91, 29);
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
-        jLabel3.setText("jLabel3");
         add(jLabel3);
-        jLabel3.setBounds(0, -4, 980, 650);
+        jLabel3.setBounds(0, 50, 1110, 590);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -174,6 +185,7 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         boolean check = true;
         if(((Product)tblProductList.getValueAt(selectedRow, 0)).getQuantity()==0){
             JOptionPane.showMessageDialog(this, "Item not available");
+            return;
         }
         for(Product product:order.getProductList()){
             if(product.getName()== ((Product)tblProductList.getValueAt(selectedRow, 0)).getName()){
@@ -183,6 +195,7 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         }
         if(check){
            Product product = new Product(((Product)tblProductList.getValueAt(selectedRow, 0)).getName(),((Product)tblProductList.getValueAt(selectedRow, 0)).getDescription());
+           product.setSuperMarketPrice(((Product)tblProductList.getValueAt(selectedRow, 0)).getSuperMarketPrice());
            order.getProductList().add(product);
         }
         ((Product)tblProductList.getValueAt(selectedRow, 0)).reduceQuantity();
@@ -194,13 +207,14 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblOrderProductList.getSelectedRow();
         if (selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select an item");
             return;
         }
         boolean check = true;
         order.getProductList().remove((Product)tblOrderProductList.getValueAt(selectedRow, 0));
         for(Product product:enterprise.getProductList()){
-            if(product.getName()== ((Product)tblProductList.getValueAt(selectedRow, 0)).getName()){
-                product.addQuantity();
+            if(product.getName()== ((Product)tblOrderProductList.getValueAt(selectedRow, 0)).getName()){
+                product.setQuantity(product.getQuantity()+((Product)tblOrderProductList.getValueAt(selectedRow, 0)).getQuantity());
                 check = false;
             }
         }
@@ -215,11 +229,19 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
             userProcessContainer.add("processWorkRequestJPanel", salesPersonTransactionHome);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
+        }else{
+            JOptionPane.showMessageDialog(this, "please add items to the cart");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        Order newOrder = new Order();
+        newOrder.setSender(order.getSender());
+        for(Product prod:order.getProductList()){
+            newOrder.getProductList().add(prod);
+        }
+        enterprise.restoreProducts(order);
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -233,10 +255,17 @@ public class SalesPersonTransactionHome extends javax.swing.JPanel {
         populateSearchProductList();
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateProductList();
+        populateOrder();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton jButton1;

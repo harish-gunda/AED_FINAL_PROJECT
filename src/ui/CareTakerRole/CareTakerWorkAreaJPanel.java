@@ -81,9 +81,9 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("CareTaker WorkArea JPanel");
+        jLabel1.setText("CareTaker WorkArea");
         add(jLabel1);
-        jLabel1.setBounds(280, 42, 331, 29);
+        jLabel1.setBounds(280, 42, 246, 29);
 
         workRequestJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -118,7 +118,7 @@ public class CareTakerWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setBounds(158, 102, 577, 135);
 
         requestSuppliesJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        requestSuppliesJButton.setText("Request Supplies");
+        requestSuppliesJButton.setText("Request Donation");
         requestSuppliesJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestSuppliesJButtonActionPerformed(evt);

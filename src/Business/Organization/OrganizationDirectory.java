@@ -35,7 +35,7 @@ public class OrganizationDirectory {
         }else if (type.getValue().equals(Type.CareTaker.getValue())){
             organization = new CareTakerOrganization();
             organizationList.add(organization);
-        }else if (type.getValue().equals(Type.CustomerOrganization.getValue())){
+        }else if (type.getValue().equals(Type.Customer.getValue())){
             organization = new CustomerOrganization();
             organizationList.add(organization);
         }else if (type.getValue().equals(Type.LightDriver.getValue())){

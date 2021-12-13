@@ -6,7 +6,6 @@ package ui.SalesSupervisorRole;
 
 import ui.SupplierAdminRole.*;
 import Business.EcoSystem;
-import ui.AdministrativeRole.*;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -207,7 +206,7 @@ public class ManageSalesSupervisorUserAccountJPanel extends javax.swing.JPanel {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
         jLabel6.setText("jLabel6");
         add(jLabel6);
-        jLabel6.setBounds(0, 0, 1050, 570);
+        jLabel6.setBounds(0, 0, 1190, 570);
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed

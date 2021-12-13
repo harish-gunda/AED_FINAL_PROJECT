@@ -10,6 +10,8 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.Order;
 import Business.WorkQueue.Product;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -49,7 +51,8 @@ public class PreviousOrders extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDetails = new javax.swing.JTable();
         btnOrderDetails = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -77,7 +80,7 @@ public class PreviousOrders extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Product", "Description", "Distributor Price", "Quantity"
+                "Product", "Description", "Price", "Quantity"
             }
         ));
         jScrollPane2.setViewportView(tblDetails);
@@ -94,10 +97,19 @@ public class PreviousOrders extends javax.swing.JPanel {
         add(btnOrderDetails);
         btnOrderDetails.setBounds(420, 300, 127, 29);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/Customer.jpeg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 940, 630);
+        jButton1.setText("<<back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1);
+        jButton1.setBounds(30, 30, 94, 29);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/Customer.jpeg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2);
+        jLabel2.setBounds(10, 10, 1040, 610);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderDetailsActionPerformed
@@ -115,16 +127,27 @@ public class PreviousOrders extends javax.swing.JPanel {
             Object[] row = new Object[4];
             row[0] = product;
             row[1] = product.getDescription();
-            row[2] = product.getDistributorPrice();
+            row[2] = product.getSuperMarketPrice();
             row[3] = product.getQuantity();
             model.addRow(row);
         }
     }//GEN-LAST:event_btnOrderDetailsActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        userProcessConatiner.remove(this);
+        Component[] componentArray = userProcessConatiner.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CustomerMain dwjp = (CustomerMain) component;
+        CardLayout layout = (CardLayout) userProcessConatiner.getLayout();
+        layout.previous(userProcessConatiner);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrderDetails;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblDetails;

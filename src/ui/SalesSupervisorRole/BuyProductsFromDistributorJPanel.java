@@ -82,7 +82,7 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1680, 1050));
         setSize(new java.awt.Dimension(1680, 1050));
@@ -181,10 +181,10 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
         add(btnRefresh);
         btnRefresh.setBounds(720, 23, 91, 29);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        add(jLabel3);
-        jLabel3.setBounds(0, 6, 1040, 740);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4);
+        jLabel4.setBounds(10, 0, 1210, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -226,8 +226,8 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
         boolean check = true;
         order.getProductList().remove((Product)tblOrderProductList.getValueAt(selectedRow, 0));
         for(Product product:distributorEnterprise.getProductList()){
-            if(product.getName()== ((Product)tblProductList.getValueAt(selectedRow, 0)).getName()){
-                product.addQuantity();
+            if(product.getName()== ((Product)tblOrderProductList.getValueAt(selectedRow, 0)).getName()){
+                product.setQuantity(product.getQuantity()+((Product)tblOrderProductList.getValueAt(selectedRow, 0)).getQuantity());
                 check = false;
             }
         }
@@ -242,11 +242,23 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
             userProcessContainer.add("processWorkRequestJPanel", salesPersonTransactionHome);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
+        }else{
+            JOptionPane.showMessageDialog(this, "please add items to the cart");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        Order newOrder = new Order();
+        newOrder.setNetworkName(order.getNetworkName());
+        newOrder.setSender(order.getSender());
+        newOrder.setSenderEnterprise(order.getSenderEnterprise());
+        newOrder.setReceiverEnterprise(order.getReceiverEnterprise());
+        newOrder.setStatus("waiting for distributor to accept");
+        for(Product prod:order.getProductList()){
+            newOrder.getProductList().add(prod);
+        }
+        distributorEnterprise.restoreProducts(newOrder);
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -271,7 +283,7 @@ public class BuyProductsFromDistributorJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblOrderProductList;

@@ -57,7 +57,7 @@ public class GroceriesAnalyticsReportsJPanel extends javax.swing.JPanel {
         for(String ent:datamap.keySet()){
             dataset.setValue(ent, datamap.get(ent));
             String top=networkSelected;
-            pieChart(dataset,"Funds Analysis");
+            pieChart(dataset,"Product Count Analysis");
         }
     }
     

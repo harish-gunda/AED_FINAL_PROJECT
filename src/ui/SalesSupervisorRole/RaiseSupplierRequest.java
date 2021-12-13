@@ -61,18 +61,19 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
         cboxNetwork = new javax.swing.JComboBox<>();
         btnRequest1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(null);
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Sender", "Receiver", "SenderEnterprise", "Receiver Enterprise", "Status"
+                "Sender", "Receiver", "SenderEnterprise", "Receiver Enterprise", "Sender Network", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -88,7 +89,7 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Product", "Description", "Distributor Price", "Quantity"
+                "Product", "Description", "Price", "Quantity"
             }
         ));
         jScrollPane2.setViewportView(tblDetails);
@@ -154,6 +155,11 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
         });
         add(jButton1);
         jButton1.setBounds(10, 30, 93, 29);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/supermarket.jpeg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3);
+        jLabel3.setBounds(10, 10, 1150, 610);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderDetailsActionPerformed
@@ -170,7 +176,7 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
             Object[] row = new Object[4];
             row[0] = product;
             row[1] = product.getDescription();
-            row[2] = product.getDistributorPrice();
+            row[2] = product.getSuperMarketPrice();
             row[3] = product.getQuantity();
             model.addRow(row);
         }
@@ -261,6 +267,7 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblDetails;
@@ -272,12 +279,13 @@ public class RaiseSupplierRequest extends javax.swing.JPanel {
         model.setRowCount(0);
         for(WorkRequest workRequest:ecoSystem.getWorkQueue().getWorkRequestList()){
             if(workRequest.getReceiver()!=null && workRequest.getReceiver().equals(userAccount) && (workRequest.getStatus().contains("Accepted by Distributor"))){
-                Object[] row = new Object[5];
+                Object[] row = new Object[6];
                 row[0] = workRequest;
                 row[1] = workRequest.getReceiver();
                 row[2] = workRequest.getSenderEnterprise();
                 row[3] = workRequest.getReceiverEnterprise();
-                row[4] = workRequest.getStatus();
+                row[4] = workRequest.getNetworkName();
+                row[5] = workRequest.getStatus();
                 model.addRow(row);
             }
         }
